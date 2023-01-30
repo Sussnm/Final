@@ -8,7 +8,7 @@ class conexion
    
 
     private $charset = "utf8";
-    private $password = "ODRqC5Kdt09u74B8";
+    private $password = "123";
     private $username = "sa";
     private $database = "inventario";
     private $hostname = "localhost";

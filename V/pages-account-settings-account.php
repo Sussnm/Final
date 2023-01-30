@@ -1,9 +1,12 @@
 <?php
 include_once "../M/conexion.php";
-include_once "../M/data.php";
+ include_once "../M/data.php";
 $con = new Conexion();
 $data = new Data($con->conectar());
-$nom = 'nombre';
+$arreglosEstados = $data->getEstados();
+$arreglosCentros = $data->getCentros();
+
+
 
 
 ?>
@@ -360,20 +363,22 @@ $nom = 'nombre';
 
 <!--------  -------------------------------------------FORMULARIO------------------------------------------------------------->
                       <form id="formAccountSettings" method="post"  action="../C/tablaController.php?method=formAccountSettings">
-                        <div class="row">
+                        
+                      <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">Equipo</label>
+                            <label for="firstName" class="form-label">Activo</label>
                             <input
                               class="form-control"
-                              type="tx_nombre"
-                              id="tx_nombre"
-                              name="tx_nombre"
-                               autofocus
+                              type="text"
+                              id="tx_activo"
+                              name="tx_activo"
+                              value=""
+                              autofocus
                             />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Marca</label>
-                            <input class="form-control" type="text" name="tx_marca" id="tx_marca"  />
+                            <input class="form-control" type="text" name="tx_marca" id="tx_marca" value="" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">Modelo</label>
@@ -382,8 +387,8 @@ $nom = 'nombre';
                               type="text"
                               id="tx_modelo"
                               name="tx_modelo"
-                             
-                            
+                              value=""
+                              
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -393,96 +398,78 @@ $nom = 'nombre';
                               class="form-control"
                               id="tx_serie"
                               name="tx_serie"
+                              value=""
                             />
                           </div>
-                        
-                          <div class="row" id="sandbox-container">
-  <div class="col-12"></div>
-</div>
-                        
-                        
+
+                          <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label class="form-label" for="phoneNumber">Centro de Costo</label>
-                            <div class="input-group input-group-merge">
-                              <span class="input-group-text"></span>
-                              <input
-                                type="text"
-                                id="tx_cecosto"
-                                name="tx_cecosto"
-                                class="form-control"
-                             
-                              />
-                            </div>
-                          </div> 
-                         
-
+                            <label for="firstName" class="form-label">Valor</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="tx_valor"
+                              name="tx_valor"
+                              value=""
+                              autofocus
+                            />
+                          </div>
                           <div class="mb-3 col-md-6">
-                            <label class="form-label" for="phoneNumber">Valor</label>
-                            <div class="input-group input-group-merge">
-                              <span class="input-group-text"></span>
-                              <input
-                                type="text"
-                                id="tx_valor"
-                                name="tx_valor"
-                                class="form-control"
-                             
-                              />
-                            </div>
-                          </div> 
+                            <label for="lastName" class="form-label">Detalle</label>
+                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                           <label class="form-label" for="country">Estado</label>
+                            <select id="tx_estado" name="tx_estado" class="select2 form-select">
+                              <option value="0" disabled>Select</option>
+                              <?php
+for($i = 0; $i < count($arreglosEstados); $i++){
+echo'<option value="'.$arreglosEstados[$i][0].'">'.$arreglosEstados[$i][1].'</option>';
+				}
+				?>
+                             </select>
+                          </div>
+                          
+                          <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">Detalle</label>
+                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                           <label class="form-label" for="country">Centro de Costo</label>
+                            <select id="tx_centro" name="tx_centro" class="select2 form-select">
+                              <option value="0" disabled>Select</option>
+                              <?php
+for($i = 0; $i < count($arreglosCentros); $i++){
+echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</option>';
+				}
+				?>
+                             </select>
+                          </div>
                          
-
-
-
-
-
-
+                        
                           <div class="mb-3 col-md-6">
                             <label for="zipCode" class="form-label">Fecha de Recepcion</label>
                             <input
                               type="date"
                               class="form-control"
-                              id="datetime"
-                              name="datetime"
+                              id="tx_date"
+                              name="tx_date"
                             
                               maxlength="6" >
                           </div>
 
 
-
-                          
                               <div class="mb-3 col-md-6">
-                            <label for="address" class="form-label">detalle</label>
-                            <input type="text" class="form-control" id="tx_detalle" name="tx_detalle"  />
+                            <label for="address" class="form-label">qr</label>
+                            <input type="text" class="form-control" id="tx_qr" name="tx_qr"  />
                           </div>
                           
 
                               
 
-                          <div class="mb-3 col-md-6">
-                            <label for="address" class="form-label">Estado</label>
-                            <input type="text" class="form-control" id="tx_estado" name="tx_estado"  />
-                          </div>
                           
 
-
-
-                          
-                          </div>
-
-                          <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">QR</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="tx_qr"
-                              name="tx_qr"
-                            />
-                          </div>
-
-
-
-                          
-                        </div>
+                         </div>
                         <div class="mt-2">
                        <button type="submit" class="btn btn-primary me-2"  id="guardar" >Añadir Registro</button>
                           <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
@@ -519,7 +506,7 @@ $nom = 'nombre';
                             >Imprimir QR</label>
                           
                         </div>
-                        <button type="submit" class="btn btn-danger deactivate-account">Guardar</button>
+                        <button type="submit" class="btn btn-danger deactivate-account">Guardar QR</button>
                       </form>
                     </div>
                   </div>

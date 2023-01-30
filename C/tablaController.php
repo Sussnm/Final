@@ -1,48 +1,47 @@
 <?php
-
 include_once '../M/conexion.php';
+include_once '../M/data.php';
+
+$con = new Conexion();
+$data = new Data($con->conectar());
 
 
 
-class TablaController
-{
-    private $con;
-    public function __construct()
-    {
-        $this->con = new Conexion(); 
-        if ($_GET['method'] == 'formAccountSettings') {
-            $this->guardar();
-        }
-    }
+
+$txserie = $_POST['tx_serie'];
+$txvalor = $_POST['tx_valor'];
+$txdetalle = $_POST['tx_detalle'];
+$txmarca = $_POST['tx_marca'];
+$txmodelo= $_POST['tx_modelo'];
+$txestado = $_POST['tx_estado'];
+$txcentro = $_POST['tx_centro'];
+$txdate = $_POST['tx_date'];
+$txqr = $_POST['tx_qr'];
+$txactivo = $_POST['tx_activo'];
 
 
 
-    public function guardar()
-    {
-        $tx_nombre = $_POST['tx_nombre'];
-        $tx_modelo = $_POST['tx_modelo'];
-        $tx_serie = $_POST['tx_serie'];
-        $tx_cecosto = $_POST['tx_cecosto'];
+ echo $txserie;
+echo "<br>";
+echo $txvalor;
+echo "<br>";
+echo $txdetalle;
+echo "<br>";
+echo $txmarca;
+echo "<br>";
+echo $txmodelo;
+echo "<br>";
+echo $txestado;
+echo "<br>";
+echo $txcentro;
+echo "<br>";
+echo $txdate;
+echo "<br>";
+echo $txqr;
+echo "<br>";
+echo $txactivo;
 
-        $tx_valor = $_POST['tx_valor'];
-       $datetime = $_POST['datetime'];
-        $tx_detalle = $_POST['tx_detalle'];
-        $tx_estado = $_POST['tx_estado'];
-         $tx_qr = $_POST['tx_qr'];
+ $data->insertActivo($txserie,$txvalor,$txdetalle,$txmarca,$txmodelo,$txestado,$txcentro,$txdate,$txqr,$txactivo);
 
-        $sql="INSERT INTO activo (fk_tipoActivo,fk_centroCosto,valor,fecha,fk_detalle, fk_estado, qr) VALUES(1, 1,'tx_valor','datetime',1,1, 'qr')";
-        $model = $this->con->conectar();
-        $resultado = $model->query($sql);
-        if($resultado){
-            //  OK
-}else{
-//ERROR
-}
-        
-    }
+//  $data->insertarcentroCosto($txcentro);
 
- 
-    
-
-}
-$controller = new TablaController();
