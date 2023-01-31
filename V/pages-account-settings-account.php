@@ -8,7 +8,6 @@ $arreglosCentros = $data->getCentros();
 
 
 
-
 ?>
 <!DOCTYPE html>
 
@@ -86,7 +85,8 @@ $arreglosCentros = $data->getCentros();
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
       <script src="js/bootstrap-datetimepicker.min.js"></script>
 
-
+ <!--Puedes descargar el script e incluirlo de manera local si así prefieres-->
+ <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
 
   </head>
 
@@ -430,10 +430,10 @@ echo'<option value="'.$arreglosEstados[$i][0].'">'.$arreglosEstados[$i][1].'</op
                              </select>
                           </div>
                           
-                          <div class="mb-3 col-md-6">
+                          <!-- <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Detalle</label>
                             <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
-                          </div>
+                          </div> -->
                           <div class="mb-3 col-md-6">
                            <label class="form-label" for="country">Centro de Costo</label>
                             <select id="tx_centro" name="tx_centro" class="select2 form-select">
@@ -479,7 +479,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                     <!-- /Account -->
                   </div>
                   <div class="card">
-                    <h5 class="card-header">Insertar Codigo QR</h5>
+                    <!-- <h5 class="card-header">Insertar Codigo QR</h5>
                     <div class="card-body">
                       <div class="mb-3 col-12 mb-0">
                         <div class="alert alert-warning">
@@ -509,7 +509,79 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                         <button type="submit" class="btn btn-danger deactivate-account">Guardar QR</button>
                       </form>
                     </div>
-                  </div>
+                  </div> -->
+
+
+                  <h1>Generando códigos QR </h1>
+    <input hidden id="txt" type="text"value ="<?php echo $valor;?>">
+    <br>
+    <img alt="Código QR" id="codigo">
+    <br>
+    <button id="btnDescargar">Descargar</button>
+
+    <script>
+        var valorrs = document.getElementById("txt").value;
+        
+        const $imagen = document.querySelector("#codigo"),
+            $boton = document.querySelector("#btnDescargar");
+
+        new QRious({
+            element: $imagen,
+            value: valorrs, // La URL o el texto
+            size: 500,
+            backgroundAlpha: 0, // 0 para fondo transparente
+            foreground: "#8bc34a", // Color del QR
+            level: "H", // Puede ser L,M,Q y H (L es el de menor nivel, H el mayor)
+
+        });
+        $boton.onclick = () => {
+            const enlace = document.createElement("a");
+            enlace.href = $imagen.src;
+            enlace.download = "Código QR generado desde parzibyte.me.png";
+            enlace.click();
+        };
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
               </div>
             </div>

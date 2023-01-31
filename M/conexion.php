@@ -11,7 +11,7 @@ class conexion
     private $password = "123";
     private $username = "sa";
     private $database = "inventario";
-    private $hostname = "localhost";
+    private $hostname = "localhost"; 
 
 
 
