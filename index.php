@@ -175,12 +175,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="V/pages-account-settings-account.php" class="menu-link">
+                  <a href="V/ingresarActivo.php" class="menu-link">
                     <div data-i18n="Account">Ingresar Activo</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="V/pages-account-settings-notifications.php" class="menu-link">
+                  <a href="V/reportes.php" class="menu-link">
                     <div data-i18n="Notifications">Notifications</div>
                   </a>
                 </li>

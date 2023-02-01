@@ -21,27 +21,28 @@ $txactivo = $_POST['tx_activo'];
 
 
 
- echo $txserie;
-echo "<br>";
-echo $txvalor;
-echo "<br>";
-echo $txdetalle;
-echo "<br>";
-echo $txmarca;
-echo "<br>";
-echo $txmodelo;
-echo "<br>";
-echo $txestado;
-echo "<br>";
-echo $txcentro;
-echo "<br>";
-echo $txdate;
-echo "<br>";
-echo $txqr;
-echo "<br>";
-echo $txactivo;
+//  echo $txserie;
+// echo "<br>";
+// echo $txvalor;
+// echo "<br>";
+// echo $txdetalle;
+// echo "<br>";
+// echo $txmarca;
+// echo "<br>";
+// echo $txmodelo;
+// echo "<br>";
+// echo $txestado;
+// echo "<br>";
+// echo $txcentro;
+// echo "<br>";
+// echo $txdate;
+// echo "<br>";
+// echo $txqr;
+// echo "<br>";
+// echo $txactivo;
 
  $data->insertActivo($txserie,$txvalor,$txdetalle,$txmarca,$txmodelo,$txestado,$txcentro,$txdate,$txqr,$txactivo);
 
 //  $data->insertarcentroCosto($txcentro);
+header("Location:../V/pages-account-settings-account.php");  ///funcion para que la pagina se muestre de nuevo
 

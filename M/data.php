@@ -63,4 +63,17 @@ where (tbl_activo.id_estado = tbl_estado.id) and (tbl_activo.id_centrocosto= tbl
 }
 
 
+public function page($noPage)
+
+{
+
+        $config= array();
+        $config[""];
+        $config[""];
+        $config[""];
+        $config[""];
+}
+
+
+
 }
