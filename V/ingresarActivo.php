@@ -7,7 +7,6 @@ $arreglosEstados = $data->getEstados();
 $arreglosCentros = $data->getCentros();
 
 
-
 ?>
 <!DOCTYPE html>
 

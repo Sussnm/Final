@@ -19,7 +19,8 @@ $txdate = $_POST['tx_date'];
 $txqr = $_POST['tx_qr'];
 $txactivo = $_POST['tx_activo'];
 
-
+$fecha_inicio = $_POST['fecha_inicio'];
+$fecha_final  = $_POST['fecha_final'];
 
 //  echo $txserie;
 // echo "<br>";

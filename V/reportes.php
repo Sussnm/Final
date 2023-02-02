@@ -6,8 +6,12 @@
 include_once "../M/conexion.php";
 
 include_once "../M/data.php";
+
 $con = new Conexion();
 $data = new Data($con->conectar());
+
+
+
 ?>
 
 
@@ -224,23 +228,7 @@ $data = new Data($con->conectar());
               </ul>
             </li>
             
-            <!-- Components -->
             
-            <!-- Cards -->
-            
-            <!-- User interface -->
-           
-
-            <!-- Extended components -->
-            
-
-            
-
-            <!-- Forms & Tables -->
-            
-            <!-- Tables -->
-            
-            <!-- Misc -->
             
             
           </ul>
@@ -313,12 +301,39 @@ $data = new Data($con->conectar());
                       
                         ><i class="bx bx-link-alt me-1"></i> Imprimir PDF</a
                       >
-                      <i class="bi bi-file-pdf"></i>
+                   
                     </li>
+
+                    
                   </ul>
+                  <form action="reportes.php"  id="Formfechas"   name="Formfechas"    method="get" accept-charset="utf-8">
+                  <div class="row">
+                    <div class="col">
+                      <input type="date" name="fecha_inicio" class="form-control"  placeholder="fecha_inicio" required>
+                    </div>
+                    <div class="col">
+                      <input type="date" name="fecha_final"   id="fecha_final"  class="form-control" placeholder="fecha_final" required>
+                    </div>
+                    <div class="col">
+                     
+                      <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
+                    </div>
+                  </div>
+                </form>
+
+<?php
+
+ 
+
+
+
+?>
+    <br /><br />
+                  <div class="card">
+
+
 
                   
-                  <div class="card">
                     <!-- Notifications -->
                     <h5 class="card-header">Reporte activos</h5>
                     <div class="card-body">
@@ -326,7 +341,7 @@ $data = new Data($con->conectar());
                       <div class="error"></div>
                     </div>
                     <div class="table-responsive">
-                      <table class="table table-striped table-borderless border-bottom">
+                      <table class="table table-striped table-borderless border-bottom"  id="tabla_resultado">
                         <thead>
                           <tr>
                           <th class="text-nowrap text-center">✉️ Activo</th>
@@ -346,30 +361,65 @@ $data = new Data($con->conectar());
                         <tbody>
                           <tr>
                           <?php
+if(empty($_GET['fecha_inicio'])){
 
-$list = $data->getDatos();
-foreach ($list as $fila){
-       echo "<tr>";
-
-    
-
+  $list = $data->getDatos();
+  foreach ($list as $fila){
+         echo "<tr>";
+  
       
-      echo "<td>".$fila['activo']. "</td>" ;
-      echo "<td>".$fila['marca']. "</td>";
-      echo "<td>".$fila['modelo']. "</td>";
-      echo "<td>".$fila['num_serie']. "</td>";
-      echo "<td>".$fila['valor']. "</td>";
-      echo "<td>".$fila['descripcion']. "</td>";
-      echo "<td>".$fila['estado']. "</td>";
-      echo "<td>".$fila['centrocosto']. "</td>";
-      echo "<td>".$fila['fecha']. "</td>";
-      echo "<td>".$fila['qr']. "</td>";
   
-     
-  echo  "</tr>";
+        
+        echo "<td>".$fila['activo']. "</td>" ;
+        echo "<td>".$fila['marca']. "</td>";
+        echo "<td>".$fila['modelo']. "</td>";
+        echo "<td>".$fila['num_serie']. "</td>";
+        echo "<td>".$fila['valor']. "</td>";
+        echo "<td>".$fila['descripcion']. "</td>";
+        echo "<td>".$fila['estado']. "</td>";
+        echo "<td>".$fila['centrocosto']. "</td>";
+        echo "<td>".$fila['fecha']. "</td>";
+        echo "<td>".$fila['qr']. "</td>";
+    
+       
+    echo  "</tr>";
+    
   
+  }
 
+}else{
+
+
+  $fechainicio= $_GET['fecha_inicio'];
+  $fechafinal = $_GET['fecha_final'];
+                            
+  $listado = $data->getFecha($fechainicio,$fechafinal);
+  foreach ($listado as $columna){
+         echo "<tr>";
+  
+      
+  
+        
+        echo "<td>".$columna['activo']. "</td>" ;
+        echo "<td>".$columna['marca']. "</td>";
+        echo "<td>".$columna['modelo']. "</td>";
+        echo "<td>".$columna['num_serie']. "</td>";
+        echo "<td>".$columna['valor']. "</td>";
+        echo "<td>".$columna['descripcion']. "</td>";
+        echo "<td>".$columna['estado']. "</td>";
+        echo "<td>".$columna['centrocosto']. "</td>";
+        echo "<td>".$columna['fecha']. "</td>";
+        echo "<td>".$columna['qr']. "</td>";
+    
+       
+    echo  "</tr>";
+    
+  
+  }
 }
+
+
+
 
 ?>
 <td>
@@ -380,15 +430,7 @@ foreach ($list as $fila){
                     </div>
                     <div class="card-body">
                      
-                      <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
+                     
                     </div>
                     <!-- /Notifications -->
                   </div>
@@ -424,7 +466,12 @@ foreach ($list as $fila){
       <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
-    <!-- / Layout wrapper -->
+    <!-- / SCRIPTS DEL CALENDARIO-->
+  
+ 
+
+
+
 
    
 
