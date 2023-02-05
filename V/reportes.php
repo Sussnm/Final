@@ -39,8 +39,7 @@ $data = new Data($con->conectar());
 
 =========================================================
  -->
-<!-- beautify ignore:start -->
-<html
+<!-- beautify ignore:star<html
   lang="en"
   class="light-style layout-menu-fixed"
   dir="ltr"
@@ -81,10 +80,17 @@ $data = new Data($con->conectar());
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../vendors/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-    <!-- Page CSS -->
+    <!-- FONTS -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/2de7b06ead.css" crossorigin="anonymous">
 
     <!-- Helpers -->
     <script src="../vendors/assets/vendor/js/helpers.js"></script>
+
+
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -319,6 +325,11 @@ $data = new Data($con->conectar());
                       <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
                     </div>
                   </div>
+
+
+                  <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+
                 </form>
 
 <?php
@@ -353,7 +364,8 @@ $data = new Data($con->conectar());
                             <th class="text-nowrap text-center">✉️ Etado</th>
                             <th class="text-nowrap text-center">🖥 Centro de Costo</th>
                             <th class="text-nowrap text-center">👩🏻‍💻Fecha de Recepcion</th>
-                            <th class="text-nowrap text-center">👩🏻‍💻QR</th>
+                            <th class="text-nowrap text-center">👩🏻‍💻N°Serie</th>
+                            <th class="text-nowrap text-center">👩🏻‍💻Opciones</th>
 
 
                           </tr>
@@ -367,9 +379,6 @@ if(empty($_GET['fecha_inicio'])){
   foreach ($list as $fila){
          echo "<tr>";
   
-      
-  
-        
         echo "<td>".$fila['activo']. "</td>" ;
         echo "<td>".$fila['marca']. "</td>";
         echo "<td>".$fila['modelo']. "</td>";
@@ -379,10 +388,21 @@ if(empty($_GET['fecha_inicio'])){
         echo "<td>".$fila['estado']. "</td>";
         echo "<td>".$fila['centrocosto']. "</td>";
         echo "<td>".$fila['fecha']. "</td>";
-        echo "<td>".$fila['qr']. "</td>";
-    
+        echo "<td> <a href='qr.php?activo=".$fila['activo']."&marca=".$fila['marca']."&modelo=".$fila['modelo'].
+        "&num_serie=".$fila['num_serie']."&valor=".$fila['valor']."&descripcion=".$fila['descripcion']."&estado=".$fila['estado'].
+        "&centrocosto=".$fila['centrocosto']."&fecha=".$fila['fecha']."'>".$fila['qr']. "</a></td>";
+
+
+/////////boton///// crud///////////////////////////
+        
+
+
+// echo "<td><a href='../C/btnEditar.php?m=eliminar&id=".$fila['id']."?'>ACTUALIZAR</a> 
+// <a href='../C/btnEliminar.php?m=eliminar&id=".$fila['id']."'>ELIMINAR</a></td>";
+   
+ echo "<td><a href=reportes.php?'actualizar&id=".$fila['id']."?'>ACTUALIZAR</a>  <a href=reportes.php?'m=eliminar&id=".$fila['id']."'>ELIMINAR</a></td>";
        
-    echo  "</tr>";
+echo  "</tr>";
     
   
   }
@@ -410,7 +430,13 @@ if(empty($_GET['fecha_inicio'])){
         echo "<td>".$columna['centrocosto']. "</td>";
         echo "<td>".$columna['fecha']. "</td>";
         echo "<td>".$columna['qr']. "</td>";
-    
+        echo "<td>
+        
+        
+        
+        
+        </td>"; 
+       ;
        
     echo  "</tr>";
     
@@ -443,7 +469,7 @@ if(empty($_GET['fecha_inicio'])){
             <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                 <div class="mb-2 mb-md-0">
-                  ©
+                  
                   
                   
                  

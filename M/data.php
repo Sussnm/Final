@@ -86,8 +86,43 @@ where (tbl_activo.id_estado = tbl_estado.id) and (tbl_activo.id_centrocosto= tbl
 
 
 }
+/////////////////////QR//////////////
+public function getActivo(){
+    $sql="SELECT  activo,marca,modelo,num_serie,valor,descripcion, tbl_estado.nombre as estado, tbl_centrocosto.nombre as centrocosto, fecha,qr
+    from tbl_activo, tbl_estado, tbl_centrocosto
+where (tbl_activo.id_estado = tbl_estado.id) and (tbl_activo.id_centrocosto= tbl_centrocosto.id) ";
+    $rs = $this->con->query($sql);
+    $arr=[];
+    foreach($rs->fetchAll(PDO::FETCH_BOTH) as $val){
+        $arr[] = $val;
+    }
+    return $arr;
+}
 
-  }
+
+
+
+public function eliminar(){
+        $sql = "DELETE FROM tbl_activo WHERE id = ?; ";
+        $res=$this->con->query($sql);
+        if ($res) {
+        return true; 
+         }else {
+        return false;
+        }
+        }
+
+
+
+
+
+   
+}
+
+
+
+
+  
 
 
 

@@ -7,6 +7,28 @@ $arreglosEstados = $data->getEstados();
 $arreglosCentros = $data->getCentros();
 
 
+/////QR/////////
+$rs = $data->getActivo();
+
+
+
+foreach ($rs as $i) {
+  
+
+    
+    $valor =" Valor: " .$i['valor']. " Fecha: " .$i['fecha']. 
+    " Detalle: " .$i['descripcion']. " Estado: " .$i['estado']. 
+    " Tipo de Activo: " .$i['activo']. " Centro de Costo: ".$i['centrocosto']. 
+    " Serie: " . $i['num_serie'].
+     " Marca: " .$i['marca'].    " Modelo: " .$i['modelo'];
+
+
+}
+
+echo($valor);
+
+
+
 ?>
 <!DOCTYPE html>
 
@@ -30,7 +52,14 @@ $arreglosCentros = $data->getCentros();
   data-assets-path="../assets/"
   data-template="vertical-menu-template-free"
 >
-  <head>
+<style>
+  .botonsito{
+    background-color: #553182;
+    
+  }
+</style>
+  
+<head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -72,7 +101,7 @@ $arreglosCentros = $data->getCentros();
 
     <!---calendario----->
 
-    <script src="../../calendario.js"></script>
+  
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -81,8 +110,8 @@ $arreglosCentros = $data->getCentros();
 
     <!--calendario---->
 
-    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-      <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <!-- <link href="../vendors/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+      <script src="js/bootstrap-datetimepicker.min.js"></script> -->
 
  <!--Puedes descargar el script e incluirlo de manera local si así prefieres-->
  <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
@@ -135,12 +164,12 @@ $arreglosCentros = $data->getCentros();
               </a>
               <ul class="menu-sub">
                 <li class="menu-item active">
-                  <a href="v/pages-account-settings-account.php" class="menu-link">
+                  <a href="v/ingresarActivo.php" class="menu-link">
                     <div data-i18n="Account">Ingreso Activo</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="../V/pages-account-settings-notifications.php" class="menu-link">
+                  <a href="../V/reportes.php" class="menu-link">
                     <div data-i18n="Notifications">Reporte de Activos</div>
                   </a>
                 </li>
@@ -215,7 +244,7 @@ $arreglosCentros = $data->getCentros();
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
-                <li class="nav-item lh-1 me-3">
+                <!-- <li class="nav-item lh-1 me-3">
                   <a
                     class="github-button"
                     href="https://github.com/themeselection/sneat-html-admin-template-free"
@@ -225,15 +254,15 @@ $arreglosCentros = $data->getCentros();
                     aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
                     >Star</a
                   >
-                </li>
+                </li> -->
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                  <!-- <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
                       <img src="../vendors/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
-                  </a>
+                  </a> -->
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                       <a class="dropdown-item" href="#">
@@ -321,16 +350,16 @@ $arreglosCentros = $data->getCentros();
                     <!-- Account -->
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <img
+                        <!-- <img
                           src="../vendors/assets/img/avatars/1.png"
                           alt="user-avatar"
                           class="d-block rounded"
                           height="100"
                           width="100"
                           id="uploadedAvatar"
-                        />
+                        /> -->
                         <div class="button-wrapper">
-                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                          <!-- <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                             <span class="d-none d-sm-block">Cargar Foto</span>
                             <i class="bx bx-upload d-block d-sm-none"></i>
                             <input
@@ -339,18 +368,18 @@ $arreglosCentros = $data->getCentros();
                               class="account-file-input"
                               hidden
                               accept="image/png, image/jpeg"
-                            />
+                            /> -->
                           </label>
-                          <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+                          <!-- <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
                             <i class="bx bx-reset d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Resetear</span>
-                          </button>
+                          </button> -->
 
-                          <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+                          <!-- <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
                             <i class="bx bx-reset d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Editar</span>
                           </button>
-                          
+                           -->
 
                           <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
                         </div>
@@ -467,8 +496,10 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
 
 
                               <div class="mb-3 col-md-6">
-                            <label for="address" class="form-label">qr</label>
-                            <input type="text" class="form-control" id="tx_qr" name="tx_qr"  />
+                            <label for="address" class="form-label">N° Registro</label>
+                            <!-- <input type="text" class="form-control" value ="<?php echo $valor;?>" id="tx_qr" name="tx_qr"  /> -->
+                          <input type="text" class="form-control" value ="" id="tx_qr" name="tx_qr"  />
+                         
                           </div>
                           
 
@@ -478,7 +509,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
 
                          </div>
                         <div class="mt-2">
-                       <button type="submit" class="btn btn-primary me-2"  id="guardar" >Añadir Registro</button>
+                       <button type="submit" class="btn btn-primary me-2" style="background-color:#553182" id="guardar" >Añadir Registro</button>
                           <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
                         </div>
                       </form>
@@ -486,37 +517,42 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                     <!-- /Account -->
                   </div>
                   <div class="card">
-                    <!-- <h5 class="card-header">Insertar Codigo QR</h5>
-                    <div class="card-body">
-                      <div class="mb-3 col-12 mb-0">
-                        <div class="alert alert-warning">
+      
 
-                        <img src="https://www.google.cl/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fes%2Ffotos%2Fc%25C3%25B3digo-qr&psig=AOvVaw3H2R6XoLx597o85NFhBCsX&ust=1674791211961000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCOj53Iep5PwCFQAAAAAdAAAAABAE">
+<!------------------------------Generador qr----------------------------------------------------------------------->
+      
+      <h3>Generar Códigos QR </h3>
+    <input hidden id="txt" type="text"value ="<?php echo $valor;?>">
+    <br>
+    <img alt="Código QR" id="codigo">
+    <br>
+    <button type="button"    class="botonsito" id="btnDescargar">Descargar</button>
+
+    <script>
+        var valorrs = document.getElementById("txt").value;
+        
+        const $imagen = document.querySelector("#codigo"),
+            $boton = document.querySelector("#btnDescargar");
+
+        new QRious({
+            element: $imagen,
+            value: valorrs, // La URL o el texto
+            size: 300,
+            backgroundAlpha: 255, // 0 para fondo transparente
+            foreground: "#553182", // Color del QR
+            level: "M", // Puede ser L,M,Q y H (L es el de menor nivel, H el mayor)
+
+        });
+        $boton.onclick = () => {
+            const enlace = document.createElement("a");
+            enlace.href = $imagen.src;
+            enlace.download = "Código QR generado desde parzibyte.me.png";
+            enlace.click();
+        };
+    </script>
 
 
-                          <h6 class="alert-heading fw-bold mb-1"></h6>
-                          <p class="mb-0"></p>
-                        </div>
-                      </div>
-                      <form id="formAccountDeactivation" onsubmit="return false">
-                        <div class="form-check mb-3">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="accountActivation"
-                            id="accountActivation"
 
-                        
-
-                          />
-                          <label class="form-check-label" for="accountActivation"
-                            >Imprimir QR</label>
-                          
-                        </div>
-                        <button type="submit" class="btn btn-danger deactivate-account">Guardar QR</button>
-                      </form>
-                    </div>
-                  </div> -->
 
 
                  
@@ -532,22 +568,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
             <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                 
-                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                  <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Documentation</a
-                  >
-
-                  <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Support</a
-                  >
+                 
                 </div>
               </div>
             </footer>
@@ -567,44 +588,11 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
 
   
 
-    <script>
+    
 
 
 
 
-//       document.getElementById('guardar').onclick = function() {
-        
-     
-
-//         var nom = document.getElementById('tx_nombre').value;
-//         // var modelo = document.getElementById('tx_modelo').value;
-//         // var serie = document.getElementById('tx_serie').value;
-//         // var centroCosto = document.getElementById('tx_cecosto').value;
-//         // var valor = document.getElementById('tx_valor').value;
-//  if(nom){
-//               $.ajax({
-//               type:"POST",
-//               url:"../C/tablaController.php",
-//               data:{
-//                 nom: nombre,
-//                 // model: modelo,
-//                 // Tserie: serie,
-//                 // cecosto: centroCosto,
-//                 // valo: valor
-//               },
-//             success:function(){alert("¡Usuario Registrado!");window.location.href="../index.php?e=0"}
-//           });}
-//         }
-
-    </script>
-
-
-
-<script type="text/javascript">
-$("#datetime").datetimepicker({
-    format: 'yyyy-mm-dd hh:ii'
-});
-</script>
 
 
 
@@ -627,6 +615,6 @@ $("#datetime").datetimepicker({
     <script src="../vendors/assets/js/pages-account-settings-account.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
   </body>
 </html>

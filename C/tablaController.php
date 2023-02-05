@@ -22,6 +22,9 @@ $txactivo = $_POST['tx_activo'];
 $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_final  = $_POST['fecha_final'];
 
+
+// $valor = $_GET['valor'];
+
 //  echo $txserie;
 // echo "<br>";
 // echo $txvalor;
@@ -42,8 +45,20 @@ $fecha_final  = $_POST['fecha_final'];
 // echo "<br>";
 // echo $txactivo;
 
+
+
+
+
+
+ 
+  
+    
+
+
+
+
  $data->insertActivo($txserie,$txvalor,$txdetalle,$txmarca,$txmodelo,$txestado,$txcentro,$txdate,$txqr,$txactivo);
 
 //  $data->insertarcentroCosto($txcentro);
-header("Location:../V/pages-account-settings-account.php");  ///funcion para que la pagina se muestre de nuevo
+header("Location:../V/ingresarActivo.php");  ///funcion para que la pagina se muestre de nuevo
 
