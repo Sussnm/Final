@@ -6,7 +6,7 @@ $con = new Conexion();
 $data = new Data($con->conectar());
 
 
-
+////////////formulario ingresoActivo///////////
 
 $txserie = $_POST['tx_serie'];
 $txvalor = $_POST['tx_valor'];
@@ -23,6 +23,8 @@ $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_final  = $_POST['fecha_final'];
 
 
+
+//////////////////////////////formulario entrega////////////
 
 
 

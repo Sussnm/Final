@@ -16,8 +16,8 @@ $data = new Data($con->conectar());
 
 
 
-<!--Pagination 1-2-4-5---->
-<!-- <?php
+
+ <?php
 
 
 
@@ -28,35 +28,9 @@ $data = new Data($con->conectar());
 
 <!DOCTYPE html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
 
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
 
-=========================================================
- -->
-<!-- beautify ignore:star<html
-  lang="en"
-  class="light-style layout-menu-fixed"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="../assets/"
-  data-template="vertical-menu-template-free"
->
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
-
-    <title>Account settings - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
-
-    <meta name="description" content="" />
+ 
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="..vendors/assets/img/favicon/favicon.ico" />
@@ -163,12 +137,12 @@ $data = new Data($con->conectar());
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                  <a href="entregadeActivo.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Entregas de Activos</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                  <a href="reporte_Entrega.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Reporte de Entrega</div>
                   </a>
                 </li>

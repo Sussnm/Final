@@ -136,6 +136,36 @@ public function Login($usuario, $contraseña)
     }
     return $existe;
 }
+
+///////////////////////////////ENTREGA DE ACTIVO//////////////////////////////////////
+
+public function entregarActivos($txuser, $txrut, $txcentro, $txequipo, $txfecha_entrega, $txcodigoQr, $txdetalle )
+{
+    $sql = "INSERT INTO tbl_entrega (nombre,  rut, id_centrocosto,   equipo,  fecha_entrega, codigo_equipo, detalle)
+                           values ('$txuser','$txrut',1,   '$txequipo','$txfecha_entrega','$txcodigoQr','$txdetalle' )";
+
+    $this->con->query($sql);
+}
+
+//////////////////////////////REPORTE DE ENTREGA////////////////////////////////////
+
+
+public function getTabla()
+{
+    $sql=" SELECT   nombre,rut,equipo,fecha_entrega,codigo_equipo,detalle, tbl_centrocosto.nombre as centrocosto, 
+    from tbl_entrega, tbl_centrocosto
+where   (tbl_enntrega.id_centrocosto= tbl_centrocosto.id)";
+
+    $rs = $this->con->query($sql);
+    $arr=[];
+    foreach ($rs->fetchAll(PDO::FETCH_BOTH) as $val) {
+        $arr[] = $val;
+    }
+    return $arr;
+}
+
+
+
 }
 
 

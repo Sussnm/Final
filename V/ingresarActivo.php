@@ -189,12 +189,12 @@ echo($valor);
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                  <a href="entregadeActivo.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Entrega de Activo</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                  <a href="reporte_Entrega.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Reporte de Entrega</div>
                   </a>
                 </li>

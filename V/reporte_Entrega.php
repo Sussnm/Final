@@ -117,7 +117,7 @@ $data = new Data($con->conectar());
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-connections.html" class="menu-link">
+                  <a href="entregadeActivo.php" class="menu-link">
                     <div data-i18n="Connections">Asignaciones de Activos</div>
                   </a>
                 </li>
@@ -270,38 +270,98 @@ $data = new Data($con->conectar());
                         </thead>
                         <tbody>
                           <tr>
- 
+                          <?php
+if(empty($_GET['fecha_inicio'])){
+
+  $list = $data->getTabla();
+  foreach ($list as $fila){
+         echo "<tr>";
   
       
+  
+       
+         echo "<td>".$fila['nombre']. "</td>" ;
+         echo "<td>".$fila['rut']. "</td>";
+         echo "<td>".$fila['equipo']. "</td>";
+         echo "<td>".$fila['fecha_entrega']. "</td>";
+         echo "<td>".$fila['codigo_equipo']. "</td>";
+         echo "<td>".$fila['detalle']. "</td>";
+         echo "<td>".$fila['centrocosto']. "</td>";
+        echo "<>
+        
+        
+        
+        
+      
+
+
+
+
+
+        <a href='../M/editar.php?'>EDITAR</a>
+        
+        
+        
+        
+        </td>";       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        echo  "</tr>";
+        
+        
+        
+          
+          }
+        
+        }else{
+        
+        
+          $fechainicio= $_GET['fecha_inicio'];
+          $fechafinal = $_GET['fecha_final'];
+                                    
+          $listado = $data->getFecha($fechainicio,$fechafinal);
+          foreach ($listado as $columna){
+                 echo "<tr>";
+          
+              
+          
+                 echo "<td>".$fila['nombre']. "</td>" ;
+                 echo "<td>".$fila['rut']. "</td>";
+                 echo "<td>".$fila['equipo']. "</td>";
+                 echo "<td>".$fila['fecha_entrega']. "</td>";
+                 echo "<td>".$fila['codigo_equipo']. "</td>";
+                 echo "<td>".$fila['detalle']. "</td>";
+                 echo "<td>".$fila['centrocosto']. "</td>";
+                echo "<td>
+                
+                
+                
+                
+                </td>"; 
+               ;
+               
+            echo  "</tr>";
+            
+          
+          }
+        }
+        
+        
+        
+        
+        ?>
   
      
 
 
 
-        
-
-
- 
-   
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-      
-  
       
 <td>
                           </tr>

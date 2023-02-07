@@ -3,7 +3,7 @@ include_once "../M/conexion.php";
  include_once "../M/data.php";
 $con = new Conexion();
 $data = new Data($con->conectar());
-$arreglosEstados = $data->getEstados();
+
 $arreglosCentros = $data->getCentros();
 
 
@@ -177,7 +177,7 @@ $arreglosCentros = $data->getCentros();
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                  <a href="reporte_Entrega.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Reporte de Entrega</div>
                   </a>
                 </li>
@@ -367,11 +367,11 @@ $arreglosCentros = $data->getCentros();
 
 
 <!--------  -------------------------------------------FORMULARIO------------------------------------------------------------->
-                      <form id="formAccountSettings" method="post"  action="../C/tablaController.php?method=formAccountSettings">
+                      <form id="entregadeActivo" method="post"  action="../C/entregaCtrl.php?method=entregadeActivo">
                         
                       <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">Nombre Completo Asigantario</label>
+                            <label for="firstName" class="form-label">Nombre Completo Asignatario</label>
                             <input
                               class="form-control"
                               type="text"
@@ -387,10 +387,10 @@ $arreglosCentros = $data->getCentros();
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Rut</label>
-                            <input class="form-control" type="text" name="tx_marca" id="tx_marca" value="" />
+                            <input class="form-control" type="text" name="tx_rut" id="tx_rut"  size="10" value="" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">Centro de Costo</label>
+                            <label for="centro" class="form-label">Centro de Costo</label>
                             <select id="tx_centro" name="tx_centro" class="select2 form-select">
                               <option value="0" disabled>Select</option>
                               <?php
@@ -420,7 +420,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                             <label for="firstName" class="form-label">Fecha de Entrega</label>
                             <input
                               class="form-control"
-                              type="text"
+                              type="date"
                               id="tx_fechaentrega"
                               name="tx_fechaentrega"
                               value=""
@@ -429,7 +429,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Codigo equipo</label>
-                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
+                            <input class="form-control" type="text" name="tx_codigoQr" id="tx_codigoQr" value="" />
                           </div>
                           <!-- <div class="mb-3 col-md-6">
                            <label class="form-label" for="country">Estado</label>
@@ -442,10 +442,10 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                              </select>
                           </div> -->
                           
-                          <!-- <div class="mb-3 col-md-6">
+                          <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Detalle</label>
                             <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
-                          </div> -->
+                          </div>
                           <!-- <div class="mb-3 col-md-6">
                            <label class="form-label" for="country">Centro de Costo</label>
                             <select id="tx_centro" name="tx_centro" class="select2 form-select">
