@@ -16,47 +16,12 @@ $data = new Data($con->conectar());
 
 
 
-<!--Pagination 1-2-4-5---->
-<!-- <?php
 
-
-
-
-      ?>
 
 
 
 <!DOCTYPE html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:star<html
-  lang="en"
-  class="light-style layout-menu-fixed"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="../assets/"
-  data-template="vertical-menu-template-free"
->
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
-
-    <title>Account settings - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
-
-    <meta name="description" content="" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="..vendors/assets/img/favicon/favicon.ico" />
@@ -109,9 +74,7 @@ $data = new Data($con->conectar());
               <span class="app-brand-logo demo">
                 
               </span>
-              <div class="img-container">
-              <img style="margin-left:0px" width="70%"  height="70%"    src="vendors/imagenes/logocormun.png" alt="">
-              </div>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">CORMUN</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -145,7 +108,7 @@ $data = new Data($con->conectar());
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="ingresarActivo.php" class="menu-link">
-                    <div data-i18n="Account">Ingreso de Activos</div>
+                    <div data-i18n="Account">Ingresar Activo</div>
                   </a>
                 </li>
                 <li class="menu-item active">
@@ -153,26 +116,25 @@ $data = new Data($con->conectar());
                     <div data-i18n="Notifications">Reporte de Activos</div>
                   </a>
                 </li>
-                
+                <li class="menu-item">
+                  <a href="pages-account-settings-connections.html" class="menu-link">
+                    <div data-i18n="Connections">Asignaciones de Activos</div>
+                  </a>
+                </li>
               </ul>
             </li>
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications">Asignaciones de Activos</div>
+                <div data-i18n="Authentications">Entrega de Activo</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="auth-login-basic.html" class="menu-link" target="_blank">
-                    <div data-i18n="Basic">Entregas de Activos</div>
+                    <div data-i18n="Basic">Reportes de Entrega</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="auth-register-basic.html" class="menu-link" target="_blank">
-                    <div data-i18n="Basic">Reporte de Entrega</div>
-                  </a>
-                </li>
-               
+                
               </ul>
             </li>
             
@@ -221,7 +183,7 @@ $data = new Data($con->conectar());
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4">
-                <span class="text-muted fw-light">Gestion de Activos /</span> Reportes de Activos
+                <span class="text-muted fw-light">Asignaciones de Activos /</span> Reportes de Entrega
               </h4>
 
               <div class="row">
@@ -230,19 +192,15 @@ $data = new Data($con->conectar());
                   <ul class="nav nav-pills flex-column flex-md-row mb-3">
                     <li class="nav-item">
                       <a class="nav-link" href="ingresarActivo.php"
-                        ><i class="bx bx-user me-1"></i> Ingreso de Activo</a
+                        ><i class="bx bx-user me-1"></i> Registro</a
                       >
                     </li>
                     <li class="nav-item">
                       <a class="nav-link active" href="javascript:void(0);"
-                        ><i class="bx bx-bell me-1"></i> Reporte de Activos</a
+                        ><i class="bx bx-bell me-1"></i> Reporte de Entrega</a
                       >
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="reportes.php"
-                        ><i class="bx bx-link-alt me-1"></i> Connections</a
-                      >
-                    </li>
+                    
 
                     <li class="nav-item">
                       <a class="nav-link" href="reportesPdf.php"
@@ -299,48 +257,27 @@ $data = new Data($con->conectar());
                           <tr>
 
                         
-                          <th class="text-nowrap text-center"> Activo</th>
-                            <th class="text-nowrap text-center"> Marca</th>
-                            <th class="text-nowrap text-center"> Modelo</th>
-                            <th class="text-nowrap text-center"> Serie</th>
-                            <th class="text-nowrap text-center"> Valor</th>
-                            <th class="text-nowrap  text-center">Detalle</th>
-                            <th class="text-nowrap text-center"> Etado</th>
+                          <th class="text-nowrap text-center"> Usuario</th>
+                            <th class="text-nowrap text-center"> Rut</th>
                             <th class="text-nowrap text-center"> Centro de Costo</th>
-                            <th class="text-nowrap text-center">Fecha de Recepcion</th>
-                            <th class="text-nowrap text-center">N°Serie</th>
-                            <th class="text-nowrap text-center">Opciones</th>
+                            <th class="text-nowrap text-center"> Equipo</th>
+                            <th class="text-nowrap text-center"> Fecha de Enntrega</th>
+                            <th class="text-nowrap  text-center">Detalle</th>
+                            <th class="text-nowrap text-center"> Codigo Equipo</th>
 
 
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                          <?php
-if(empty($_GET['fecha_inicio'])){
-
-  $list = $data->getDatos();
-  foreach ($list as $fila){
-         echo "<tr>";
+ 
   
       
   
-       
-        echo "<td>".$fila['activo']. "</td>" ;
-        echo "<td>".$fila['marca']. "</td>";
-        echo "<td>".$fila['modelo']. "</td>";
-        echo "<td>".$fila['num_serie']. "</td>";
-        echo "<td>".$fila['valor']. "</td>";
-        echo "<td>".$fila['descripcion']. "</td>";
-        echo "<td>".$fila['estado']. "</td>";
-        echo "<td>".$fila['centrocosto']. "</td>";
-        echo "<td>".$fila['fecha']. "</td>";
-        echo "<td> <a href='qr.php?activo=".$fila['activo']."&marca=".$fila['marca']."&modelo=".$fila['modelo'].
-        "&num_serie=".$fila['num_serie']."&valor=".$fila['valor']."&descripcion=".$fila['descripcion']."&estado=".$fila['estado'].
-        "&centrocosto=".$fila['centrocosto']."&fecha=".$fila['fecha']."'>".$fila['qr']. "</a></td>";
+     
 
 
-/////////boton///// crud///////////////////////////
+
         
 
 
@@ -349,20 +286,6 @@ if(empty($_GET['fecha_inicio'])){
 
    
 
-echo"<td>
-
-
-
-
-
-<a href='../M/editar.php?activo=".$fila['activo']."&marca=".$fila['marca']."&modelo=".$fila['modelo'].
-"&num_serie=".$fila['num_serie']."&valor=".$fila['valor']."&descripcion=".$fila['descripcion']."&estado=".$fila['estado'].
-"&centrocosto=".$fila['centrocosto']."&fecha=".$fila['fecha']."'".$fila['qr']. "'><button type='button' class ='btn btn-'>EDITAR</a>
-
-
-
-
-</td>";       
 
 
 
@@ -372,53 +295,14 @@ echo"<td>
 
 
 
-echo  "</tr>";
 
 
 
-  
-  }
 
-}else{
-
-
-  $fechainicio= $_GET['fecha_inicio'];
-  $fechafinal = $_GET['fecha_final'];
-                            
-  $listado = $data->getFecha($fechainicio,$fechafinal);
-  foreach ($listado as $columna){
-         echo "<tr>";
   
       
   
-        echo "<td>".$columna['activo']. "</td>" ;
-        echo "<td>".$columna['marca']. "</td>";
-        echo "<td>".$columna['modelo']. "</td>";
-        echo "<td>".$columna['num_serie']. "</td>";
-        echo "<td>".$columna['valor']. "</td>";
-        echo "<td>".$columna['descripcion']. "</td>";
-        echo "<td>".$columna['estado']. "</td>";
-        echo "<td>".$columna['centrocosto']. "</td>";
-        echo "<td>".$columna['fecha']. "</td>";
-        echo "<td>".$columna['qr']. "</td>";
-        echo "<td>
-        
-        
-        
-        
-        </td>"; 
-       ;
-       
-    echo  "</tr>";
-    
-  
-  }
-}
-
-
-
-
-?>
+      
 <td>
                           </tr>
                         </tbody>

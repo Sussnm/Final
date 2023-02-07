@@ -23,6 +23,9 @@ $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_final  = $_POST['fecha_final'];
 
 
+
+
+
 // $valor = $_GET['valor'];
 
 //  echo $txserie;
@@ -50,14 +53,15 @@ $fecha_final  = $_POST['fecha_final'];
 
 
 
- 
-  
-    
+
+
 
 
 
 
  $data->insertActivo($txserie,$txvalor,$txdetalle,$txmarca,$txmodelo,$txestado,$txcentro,$txdate,$txqr,$txactivo);
+
+
 
 //  $data->insertarcentroCosto($txcentro);
 header("Location:../V/ingresarActivo.php");  ///funcion para que la pagina se muestre de nuevo

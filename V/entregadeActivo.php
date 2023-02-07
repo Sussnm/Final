@@ -8,24 +8,7 @@ $arreglosCentros = $data->getCentros();
 
 
 /////QR/////////
-$rs = $data->getActivo();
 
-
-
-foreach ($rs as $i) {
-  
-
-    
-    $valor =" Valor: " .$i['valor']. " Fecha: " .$i['fecha']. 
-    " Detalle: " .$i['descripcion']. " Estado: " .$i['estado']. 
-    " Tipo de Activo: " .$i['activo']. " Centro de Costo: ".$i['centrocosto']. 
-    " Serie: " . $i['num_serie'].
-     " Marca: " .$i['marca'].    " Modelo: " .$i['modelo'];
-
-
-}
-
-echo($valor);
 
 
 
@@ -324,7 +307,7 @@ echo($valor);
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Gestion de Activos /</span> Ingresar Activo</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Asignaciones de Activos /</span> Entrega de Activo</h4>
 
               <div class="row">
                 <div class="col-md-12">
@@ -333,18 +316,14 @@ echo($valor);
                       <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Registro</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="reportes.php"
-                        ><i class="bx bx-bell me-1"></i> Reporte de Activos</a
+                      <a class="nav-link" href="reporte_Entrega.php"
+                        ><i class="bx bx-bell me-1"></i> Reporte de Entrega</a
                       >
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages-account-settings-connections.php"
-                        ><i class="bx bx-link-alt me-1"></i> Connections</a
-                      >
-                    </li>
+                    
                   </ul>
                   <div class="card mb-4">
-                    <h5 class="card-header">Ingrese Activo</h5>
+                    <h5 class="card-header">Datos de Usuarios</h5>
                     <!-- Account -->
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -392,12 +371,12 @@ echo($valor);
                         
                       <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">Activo</label>
+                            <label for="firstName" class="form-label">Nombre Completo Asigantario</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="tx_activo"
-                              name="tx_activo"
+                              id="tx_usuario"
+                              name="tx_usuario"
                               value=""
                               autofocus
                             
@@ -407,69 +386,11 @@ echo($valor);
 
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Marca</label>
+                            <label for="lastName" class="form-label">Rut</label>
                             <input class="form-control" type="text" name="tx_marca" id="tx_marca" value="" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">Modelo</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="tx_modelo"
-                              name="tx_modelo"
-                              value=""
-                              
-                            />
-                            
-
-                          </div>
-
-    
-                          <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Serie</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="tx_serie"
-                              name="tx_serie"
-                              value=""
-                            />
-                          </div>
-
-                          <div class="row">
-                          <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">Valor</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="tx_valor"
-                              name="tx_valor"
-                              value=""
-                              autofocus
-                            />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Detalle</label>
-                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                           <label class="form-label" for="country">Estado</label>
-                            <select id="tx_estado" name="tx_estado" class="select2 form-select">
-                              <option value="0" disabled>Select</option>
-                              <?php
-for($i = 0; $i < count($arreglosEstados); $i++){
-echo'<option value="'.$arreglosEstados[$i][0].'">'.$arreglosEstados[$i][1].'</option>';
-				}
-				?>
-                             </select>
-                          </div>
-                          
-                          <!-- <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Detalle</label>
-                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
-                          </div> -->
-                          <div class="mb-3 col-md-6">
-                           <label class="form-label" for="country">Centro de Costo</label>
+                            <label for="email" class="form-label">Centro de Costo</label>
                             <select id="tx_centro" name="tx_centro" class="select2 form-select">
                               <option value="0" disabled>Select</option>
                               <?php
@@ -478,9 +399,62 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
 				}
 				?>
                              </select>
+                            
+
                           </div>
+
+    
+                          <div class="mb-3 col-md-6">
+                            <label for="organization" class="form-label">Equipo</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="tx_equipo"
+                              name="tx_equipo"
+                              value=""
+                            />
+                          </div>
+
+                          <div class="row">
+                          <div class="mb-3 col-md-6">
+                            <label for="firstName" class="form-label">Fecha de Entrega</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="tx_fechaentrega"
+                              name="tx_fechaentrega"
+                              value=""
+                              autofocus
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">Codigo equipo</label>
+                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
+                          </div>
+                          <!-- <div class="mb-3 col-md-6">
+                           <label class="form-label" for="country">Estado</label>
+                            <select id="tx_estado" name="tx_estado" class="select2 form-select">
+                              <option value="0" disabled>Select</option>
+                            
+
+				
+			
+                             </select>
+                          </div> -->
+                          
+                          <!-- <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">Detalle</label>
+                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
+                          </div> -->
+                          <!-- <div class="mb-3 col-md-6">
+                           <label class="form-label" for="country">Centro de Costo</label>
+                            <select id="tx_centro" name="tx_centro" class="select2 form-select">
+                              <option value="0" disabled>Select</option>
+ 
+                             </select>
+                          </div> -->
                          
-                        
+<!--                         
                           <div class="mb-3 col-md-6">
                             <label for="zipCode" class="form-label">Fecha de Recepcion</label>
                             <input
@@ -490,15 +464,15 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                               name="tx_date"
                             
                               maxlength="6" >
-                          </div>
+                          </div> -->
 
 
-                              <div class="mb-3 col-md-6">
+                              <!-- <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">N° Registro</label>
-                            <!-- <input type="text" class="form-control" value ="<?php echo $valor;?>" id="tx_qr" name="tx_qr"  /> -->
+                         
                           <input type="text" class="form-control" value ="" id="tx_qr" name="tx_qr"  />
                          
-                          </div>
+                          </div> -->
                           
 
                               
@@ -521,36 +495,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
       
 
 <!------------------------------Generador qr----------------------------------------------------------------------->
-      
-      <h3>Generar Códigos QR </h3>
-    <input hidden id="txt" type="text"value ="<?php echo $valor;?>">
-    <br>
-    <img alt="Código QR" id="codigo">
-    <br>
-    <button type="button"    class="botonsito" id="btnDescargar">Descargar</button>
-
-    <script>
-        var valorrs = document.getElementById("txt").value;
-        
-        const $imagen = document.querySelector("#codigo"),
-            $boton = document.querySelector("#btnDescargar");
-
-        new QRious({
-            element: $imagen,
-            value: valorrs, // La URL o el texto
-            size: 300,
-            backgroundAlpha: 255, // 0 para fondo transparente
-            foreground: "#553182", // Color del QR
-            level: "M", // Puede ser L,M,Q y H (L es el de menor nivel, H el mayor)
-
-        });
-        $boton.onclick = () => {
-            const enlace = document.createElement("a");
-            enlace.href = $imagen.src;
-            enlace.download = "Código QR generado desde parzibyte.me.png";
-            enlace.click();
-        };
-    </script>
+    
 
 
 
