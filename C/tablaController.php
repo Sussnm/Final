@@ -19,8 +19,6 @@ $txdate = $_POST['tx_date'];
 $txqr = $_POST['tx_qr'];
 $txactivo = $_POST['tx_activo'];
 
-$fecha_inicio = $_POST['fecha_inicio'];
-$fecha_final  = $_POST['fecha_final'];
 
 
 
@@ -60,11 +58,17 @@ $fecha_final  = $_POST['fecha_final'];
 
 
 
+if ($_REQUEST["method"]=="formAccountSettings") {
+    $fecha_final  = $_POST['fecha_final'];
+    
+    $fecha_inicio = $_POST['fecha_inicio'];
 
- $data->insertActivo($txserie,$txvalor,$txdetalle,$txmarca,$txmodelo,$txestado,$txcentro,$txdate,$txqr,$txactivo);
-
-
-
+    $data->insertActivo($txserie, $txvalor, $txdetalle, $txmarca, $txmodelo, $txestado, $txcentro, $txdate, $txqr, $txactivo);
+}
+if ($_REQUEST["method"]=="edit") {
+    $id = $_POST["id"];
+    $data->editar($id,$txactivo, $txmarca, $txmodelo, $txserie, $txvalor, $txdetalle, $txestado, $txcentro, $txdate, $txqr);
+}
 //  $data->insertarcentroCosto($txcentro);
 header("Location:../V/ingresarActivo.php");  ///funcion para que la pagina se muestre de nuevo
 

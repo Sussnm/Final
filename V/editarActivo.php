@@ -1,21 +1,45 @@
-<?php
+<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<?php 
 include_once "../M/conexion.php";
- include_once "../M/data.php";
+include_once "../M/data.php";
 $con = new Conexion();
 $data = new Data($con->conectar());
-
+$arreglosEstados = $data->getEstados();
 $arreglosCentros = $data->getCentros();
 
 
 /////QR/////////
+$rs = $data->getActivo();
 
 
 
+foreach ($rs as $i) {
+ 
+
+   
+   $valor =" Valor: " .$i['valor']. " Fecha: " .$i['fecha']. 
+   " Detalle: " .$i['descripcion']. " Estado: " .$i['estado']. 
+   " Tipo de Activo: " .$i['activo']. " Centro de Costo: ".$i['centrocosto']. 
+   " Serie: " . $i['num_serie'].
+    " Marca: " .$i['marca'].    " Modelo: " .$i['modelo'];
+
+
+}
 
 ?>
-<!DOCTYPE html>
-
-
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -161,7 +185,7 @@ $arreglosCentros = $data->getCentros();
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                  <a href="entregadeActivo.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Entrega de Activo</div>
                   </a>
                 </li>
@@ -296,7 +320,7 @@ $arreglosCentros = $data->getCentros();
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Asignaciones de Activos /</span> Entrega de Activo</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Gestion de Activos /</span> Editar Activo</h4>
 
               <div class="row">
                 <div class="col-md-12">
@@ -305,14 +329,18 @@ $arreglosCentros = $data->getCentros();
                       <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Registro</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="reporte_Entrega.php"
-                        ><i class="bx bx-bell me-1"></i> Reporte de Entrega</a
+                      <a class="nav-link" href="reportes.php"
+                        ><i class="bx bx-bell me-1"></i> Reporte de Activos</a
                       >
                     </li>
-                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="pages-account-settings-connections.php"
+                        ><i class="bx bx-link-alt me-1"></i> Connections</a
+                      >
+                    </li>
                   </ul>
                   <div class="card mb-4">
-                    <h5 class="card-header">Datos de Usuarios</h5>
+                    <h5 class="card-header">Edite Activo</h5>
                     <!-- Account -->
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -356,17 +384,17 @@ $arreglosCentros = $data->getCentros();
 
 
 <!--------  -------------------------------------------FORMULARIO------------------------------------------------------------->
-                      <form id="entregadeActivo" method="post"  action="../C/entregaCtrl.php?method=entregadeActivo">
+                      <form id="formAccountSettings" method="post"  action="../C/tablaController.php?method=edit">
                         
                       <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">Nombre Completo Asignatario</label>
+                            <label for="firstName" class="form-label">Activo</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="tx_usuario"
-                              name="tx_usuario"
-                              value=""
+                              id="tx_activo"
+                              name="tx_activo"
+                              value="<?php  echo $_REQUEST['activo']?>"
                               autofocus
                             
 
@@ -374,76 +402,83 @@ $arreglosCentros = $data->getCentros();
                       
 
                           </div>
+
+                          <input type="hidden" name="id" value="<?php echo $_REQUEST['id']?>">
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Rut</label>
-                            <input class="form-control" type="text" name="tx_rut" id="tx_rut"  size="10" value="" />
+                            <label for="lastName" class="form-label">Marca</label>
+                            <input class="form-control" type="text" name="tx_marca" id="tx_marca" value="<?php  echo $_REQUEST['marca']?>" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="centro" class="form-label">Centro de Costo</label>
-                            <select id="tx_centro" name="tx_centro" class="select2 form-select">
-                              <option value="0" disabled>Select</option>
-                              <?php
-for($i = 0; $i < count($arreglosCentros); $i++){
-echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</option>';
-				}
-				?>
-                             </select>
+                            <label for="email" class="form-label">Modelo</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="tx_modelo"
+                              name="tx_modelo"
+                              value="<?php  echo $_REQUEST['modelo']?>"
+                              
+                            />
                             
 
                           </div>
 
     
                           <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Equipo</label>
+                            <label for="organization" class="form-label">Serie</label>
                             <input
                               type="text"
                               class="form-control"
-                              id="tx_equipo"
-                              name="tx_equipo"
-                              value=""
+                              id="tx_serie"
+                              name="tx_serie"
+                              value="<?php  echo $_REQUEST['num_serie']?>"
                             />
                           </div>
 
                           <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">Fecha de Entrega</label>
+                            <label for="firstName" class="form-label">Valor</label>
                             <input
                               class="form-control"
-                              type="date"
-                              id="tx_fechaentrega"
-                              name="tx_fechaentrega"
-                              value=""
+                              type="text"
+                              id="tx_valor"
+                              name="tx_valor"
+                              value="<?php  echo $_REQUEST['valor']?>"
                               autofocus
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Codigo equipo</label>
-                            <input class="form-control" type="text" name="tx_codigoQr" id="tx_codigoQr" value="" />
+                            <label for="lastName" class="form-label">Detalle</label>
+                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="<?php  echo $_REQUEST['descripcion']?>" />
                           </div>
-                          <!-- <div class="mb-3 col-md-6">
+                          <div class="mb-3 col-md-6">
                            <label class="form-label" for="country">Estado</label>
                             <select id="tx_estado" name="tx_estado" class="select2 form-select">
                               <option value="0" disabled>Select</option>
-                            
-
-				
-			
+                              <?php
+for($i = 0; $i < count($arreglosEstados); $i++){
+echo'<option value="'.$arreglosEstados[$i][0].'"  '.($_REQUEST["estado"]==$arreglosEstados[$i][0] || $_REQUEST["estado"]==$arreglosEstados[$i][1]?"selected":"").' >'.$arreglosEstados[$i][1].'</option>';
+				}
+				?>
                              </select>
-                          </div> -->
+                          </div>
                           
-                          <div class="mb-3 col-md-6">
+                          <!-- <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Detalle</label>
                             <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
-                          </div>
-                          <!-- <div class="mb-3 col-md-6">
+                          </div> -->
+                          <div class="mb-3 col-md-6">
                            <label class="form-label" for="country">Centro de Costo</label>
                             <select id="tx_centro" name="tx_centro" class="select2 form-select">
                               <option value="0" disabled>Select</option>
- 
+                              <?php
+for($i = 0; $i < count($arreglosCentros); $i++){
+echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$arreglosCentros[$i][0] || $_REQUEST["centrocosto"]==$arreglosCentros[$i][1]?"selected":"").'>'.$arreglosCentros[$i][1].'</option>';
+				}
+				?>
                              </select>
-                          </div> -->
+                          </div>
                          
-<!--                         
+                        
                           <div class="mb-3 col-md-6">
                             <label for="zipCode" class="form-label">Fecha de Recepcion</label>
                             <input
@@ -451,17 +486,17 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                               class="form-control"
                               id="tx_date"
                               name="tx_date"
-                            
+                              value="<?php  echo $_REQUEST['fecha']?>"
                               maxlength="6" >
-                          </div> -->
+                          </div>
 
 
-                              <!-- <div class="mb-3 col-md-6">
+                              <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">N° Registro</label>
+                            <!-- <input type="text" class="form-control" value ="<?php echo $valor;?>" id="tx_qr" name="tx_qr"  /> -->
+                          <input type="text" class="form-control" id="tx_qr" name="tx_qr"   value="<?php  echo $_REQUEST['qr']?>" />
                          
-                          <input type="text" class="form-control" value ="" id="tx_qr" name="tx_qr"  />
-                         
-                          </div> -->
+                          </div>
                           
 
                               
@@ -470,7 +505,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
 
                          </div>
                         <div class="mt-2">
-                       <button type="submit" class="btn btn-primary me-2" style="background-color:#553182" id="guardar" >Añadir Registro</button>
+                       <button type="submit" class="btn btn-primary me-2" style="background-color:#553182" id="guardar" >Editar Registro</button>
                           <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
                         </div>
                       </form>
@@ -484,7 +519,36 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
       
 
 <!------------------------------Generador qr----------------------------------------------------------------------->
-    
+      
+      <h3>Generar Códigos QR </h3>
+    <input hidden id="txt" type="text"value ="<?php echo $valor;?>">
+    <br>
+    <img alt="Código QR" id="codigo">
+    <br>
+    <button type="button"    class="botonsito" id="btnDescargar">Descargar</button>
+
+    <script>
+        var valorrs = document.getElementById("txt").value;
+        
+        const $imagen = document.querySelector("#codigo"),
+            $boton = document.querySelector("#btnDescargar");
+
+        new QRious({
+            element: $imagen,
+            value: valorrs, // La URL o el texto
+            size: 300,
+            backgroundAlpha: 255, // 0 para fondo transparente
+            foreground: "#553182", // Color del QR
+            level: "M", // Puede ser L,M,Q y H (L es el de menor nivel, H el mayor)
+
+        });
+        $boton.onclick = () => {
+            const enlace = document.createElement("a");
+            enlace.href = $imagen.src;
+            enlace.download = "Código QR generado desde parzibyte.me.png";
+            enlace.click();
+        };
+    </script>
 
 
 

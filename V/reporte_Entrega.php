@@ -161,7 +161,17 @@ $data = new Data($con->conectar());
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <!-- Search -->
-              <h1>HOLAAAA</h1>
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item d-flex align-items-center">
+                  <i class="bx bx-search fs-4 lh-0"></i>
+                  <input
+                    type="text"
+                    class="form-control border-0 shadow-none"
+                    placeholder="Search..."
+                    aria-label="Search..."
+                  />
+                </div>
+              </div>
               <!-- /Search -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -261,10 +271,10 @@ $data = new Data($con->conectar());
                             <th class="text-nowrap text-center"> Rut</th>
                             <th class="text-nowrap text-center"> Centro de Costo</th>
                             <th class="text-nowrap text-center"> Equipo</th>
-                            <th class="text-nowrap text-center"> Fecha de Enntrega</th>
+                            <th class="text-nowrap text-center"> Fecha de Entrega</th>
                             <th class="text-nowrap  text-center">Detalle</th>
                             <th class="text-nowrap text-center"> Codigo Equipo</th>
-
+                            <th class="text-nowrap text-center"> Opciones</th>
 
                           </tr>
                         </thead>
@@ -280,14 +290,14 @@ if(empty($_GET['fecha_inicio'])){
       
   
        
-         echo "<td>".$fila['nombre']. "</td>" ;
+         echo "<td>".$fila['nom_user']. "</td>" ;
          echo "<td>".$fila['rut']. "</td>";
          echo "<td>".$fila['equipo']. "</td>";
          echo "<td>".$fila['fecha_entrega']. "</td>";
          echo "<td>".$fila['codigo_equipo']. "</td>";
          echo "<td>".$fila['detalle']. "</td>";
          echo "<td>".$fila['centrocosto']. "</td>";
-        echo "<>
+       
         
         
         
@@ -298,12 +308,12 @@ if(empty($_GET['fecha_inicio'])){
 
 
 
-        <a href='../M/editar.php?'>EDITAR</a>
+      " <td><a href='../M/editar.php?'>EDITAR</a></td> ";
         
         
         
         
-        </td>";       
+            
         
         
         
@@ -332,7 +342,7 @@ if(empty($_GET['fecha_inicio'])){
           
               
           
-                 echo "<td>".$fila['nombre']. "</td>" ;
+                 echo "<td>".$fila['nom_user']. "</td>" ;
                  echo "<td>".$fila['rut']. "</td>";
                  echo "<td>".$fila['equipo']. "</td>";
                  echo "<td>".$fila['fecha_entrega']. "</td>";

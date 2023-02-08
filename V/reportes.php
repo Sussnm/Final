@@ -173,7 +173,17 @@ $data = new Data($con->conectar());
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <!-- Search -->
-              <h1>HOLAAAA</h1>
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item d-flex align-items-center">
+                  <i class="bx bx-search fs-4 lh-0"></i>
+                  <input
+                    type="text"
+                    class="form-control border-0 shadow-none"
+                    placeholder="Search..."
+                    aria-label="Search..."
+                  />
+                </div>
+              </div>
               <!-- /Search -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -311,7 +321,7 @@ if(empty($_GET['fecha_inicio'])){
         echo "<td>".$fila['fecha']. "</td>";
         echo "<td> <a href='qr.php?activo=".$fila['activo']."&marca=".$fila['marca']."&modelo=".$fila['modelo'].
         "&num_serie=".$fila['num_serie']."&valor=".$fila['valor']."&descripcion=".$fila['descripcion']."&estado=".$fila['estado'].
-        "&centrocosto=".$fila['centrocosto']."&fecha=".$fila['fecha']."'>".$fila['qr']. "</a></td>";
+        "&centrocosto=".$fila['centrocosto']."&fecha=".$fila['fecha']."&qr=".$fila['qr']."'>".$fila['qr']. "</a></td>";
 
 
 /////////boton///// crud///////////////////////////
@@ -329,9 +339,9 @@ echo"<td>
 
 
 
-<a href='../M/editar.php?activo=".$fila['activo']."&marca=".$fila['marca']."&modelo=".$fila['modelo'].
+<a href='editarActivo.php?activo=".$fila['activo']."&marca=".$fila['marca']."&modelo=".$fila['modelo'].
 "&num_serie=".$fila['num_serie']."&valor=".$fila['valor']."&descripcion=".$fila['descripcion']."&estado=".$fila['estado'].
-"&centrocosto=".$fila['centrocosto']."&fecha=".$fila['fecha']."'".$fila['qr']. "'><button type='button' class ='btn btn-'>EDITAR</a>
+"&centrocosto=".$fila['centrocosto']."&fecha=".$fila['fecha']."&qr=".$fila['qr']."&id=".$fila['id_activo']. "'><button type='button' class ='btn btn-'>EDITAR</a>
 
 
 

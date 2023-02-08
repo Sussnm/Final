@@ -57,8 +57,8 @@ public function getCentros()
 ///////////////////////////////////////////////////////TABLA//////////////////////////////////////////////////////////
 public function getDatos()
 {
-    $sql=" SELECT   activo,marca,modelo,num_serie,valor,descripcion, tbl_estado.nombre as estado, tbl_centrocosto.nombre as centrocosto, fecha,qr
-    from tbl_activo, tbl_estado, tbl_centrocosto
+    $sql=" SELECT   activo,marca,modelo,num_serie,valor,descripcion, tbl_estado.nombre as estado, tbl_centrocosto.nombre as centrocosto, fecha,qr,
+    tbl_activo.id as id_activo from tbl_activo, tbl_estado, tbl_centrocosto
 where (tbl_activo.id_estado = tbl_estado.id) and (tbl_activo.id_centrocosto= tbl_centrocosto.id)";
 
     $rs = $this->con->query($sql);
@@ -103,8 +103,8 @@ where (tbl_activo.id_estado = tbl_estado.id) and (tbl_activo.id_centrocosto= tbl
 
 public function editar($id, $activo, $marca, $modelo, $num_serie, $valor, $descripcion, $estado, $centrocosto, $fecha, $qr)
 {
-    $sql="UPDATE tbl_activo SET id= '$id', activo = '$activo', marca = '$marca', modelo = '$modelo', num_serie = '$num_serie', valor= '$valor', descripcion='estado', centrocosto='$centrocosto', fecha='fecha', qr='$qr'  WHERE id = '$id'";
-
+    $sql="UPDATE tbl_activo SET activo = '$activo', marca = '$marca', modelo = '$modelo', num_serie = '$num_serie', valor= '$valor', descripcion='$descripcion', id_estado='$estado',id_centrocosto='$centrocosto', fecha='$fecha', qr='$qr'  WHERE id = '$id'";
+    
 
     $this->con->query($sql);
 }
@@ -141,7 +141,7 @@ public function Login($usuario, $contraseña)
 
 public function entregarActivos($txuser, $txrut, $txcentro, $txequipo, $txfecha_entrega, $txcodigoQr, $txdetalle )
 {
-    $sql = "INSERT INTO tbl_entrega (nombre,  rut, id_centrocosto,   equipo,  fecha_entrega, codigo_equipo, detalle)
+    $sql = "INSERT INTO tbl_entrega (nom_user,  rut, id_centrocosto,   equipo,  fecha_entrega, codigo_equipo, detalle)
                            values ('$txuser','$txrut',1,   '$txequipo','$txfecha_entrega','$txcodigoQr','$txdetalle' )";
 
     $this->con->query($sql);
@@ -152,9 +152,9 @@ public function entregarActivos($txuser, $txrut, $txcentro, $txequipo, $txfecha_
 
 public function getTabla()
 {
-    $sql=" SELECT   nombre,rut,equipo,fecha_entrega,codigo_equipo,detalle, tbl_centrocosto.nombre as centrocosto, 
+    $sql=" SELECT   nom_user,rut,equipo,fecha_entrega,codigo_equipo,detalle, tbl_centrocosto.nombre as centrocosto
     from tbl_entrega, tbl_centrocosto
-where   (tbl_enntrega.id_centrocosto= tbl_centrocosto.id)";
+where   (tbl_entrega.id_centrocosto= tbl_centrocosto.id)";
 
     $rs = $this->con->query($sql);
     $arr=[];
