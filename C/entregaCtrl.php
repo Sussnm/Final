@@ -5,19 +5,63 @@ include_once '../M/data.php';
 $con = new Conexion();
 $data = new Data($con->conectar());
 
-
-
-$txtuser = $_POST['tx_usuario'];
-$txrut = $_POST['tx_rut'];
+  $txusuConsigna = $_POST['tx_usuCon'];
+    $txrutConsigna = $_POST['rut_consigna'];
+  $txcargoConsigna = $_POST['tx_cargoConsigna'];
 $txcentro = $_POST['tx_centro'];
+$txcodigo = $_POST['tx_codigoEquipo'];
 $txequipo = $_POST['tx_equipo'];
 $txfecha_entrega = $_POST['tx_fechaentrega'];
-$txcodigoQr = $_POST['tx_codigoQr'];
 $txdetalle = $_POST['tx_detalle'];
+$txtrut = $_POST['tx_rutAsigna'];
+$txnombreAsigna = $_POST['tx_nomAsigna'];
+$txcargoAsigna = $_POST['tx_cargoAsigna'];
+
+
+echo $txusuConsigna; 
+echo $txrutConsigna ;
+echo $txcargoConsigna ;
+echo $txcentro;
+echo $txcodigo;
+echo $txequipo;
+echo $txfecha_entrega;
+echo $txdetalle;
+echo $txtrut;
+echo $txnombreAsigna;
+echo $txusuConsigna; 
+echo $txcargoAsigna;
 
 
 
-$data->entregarActivos($txtuser,$txrut,$txcentro,$txequipo,$txfecha_entrega,$txcodigoQr,$txdetalle);
+
+$data->entregarActivos($txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega,  $txdetalle,$txtrut , $txnombreAsigna, $txcargoAsigna );
+//  $data->insertarcentroCosto($txcentro);
+ ///funcion para que la pagina se muestre de nuevo
+header("Location: ../V/entregadeActivo.php");
+// header("Location:../V/ediciones/editarEntrega.php");
 
 
-header("Location:../V/entregadeActivo.php");  ///funcion para que la pagina se muestre de nuevo
+
+
+if ($_REQUEST["method"]=="entregadeActivo") {
+  $fecha_final  = $_POST['fecha_final'];
+  
+  $fecha_inicio = $_POST['fecha_inicio'];
+
+  $data->insertActivo($txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega,  $txdetalle,$txtrut , $txnombreAsigna, $txcargoAsigna);
+}
+if ($_REQUEST["method"]=="edit") {
+  $id = $_POST["id"];
+  $data->editarUsuario($id,$txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega,  $txdetalle,$txtrut , $txnombreAsigna, $txcargoAsigna);
+}
+
+
+
+
+
+
+
+
+
+
+///////////////////////////PAGINA ASOCIADA A LA TABLA ENTREGA DE ACTIVO A USUARIO/////////////////////////

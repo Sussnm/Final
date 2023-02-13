@@ -20,55 +20,55 @@ $txqr = $_POST['tx_qr'];
 $txactivo = $_POST['tx_activo'];
 
 
-
-
-//////////////////////////////formulario entrega////////////
-
-
-
-// $valor = $_GET['valor'];
-
-//  echo $txserie;
-// echo "<br>";
-// echo $txvalor;
-// echo "<br>";
+// echo $txserie ; 
+//  echo $txvalor ;
 // echo $txdetalle;
-// echo "<br>";
-// echo $txmarca;
-// echo "<br>";
-// echo $txmodelo;
-// echo "<br>";
-// echo $txestado;
-// echo "<br>";
-// echo $txcentro;
-// echo "<br>";
-// echo $txdate;
-// echo "<br>";
-// echo $txqr;
-// echo "<br>";
-// echo $txactivo;
-
-
-
-
-
-
-
+// echo   $txmarca ;
+// echo    $txmodelo;
+// echo    $txestado ;
+// echo   $txcentro ;
+// echo    $txdate; 
+// echo   $txqr ;
+//   echo $txactivo;
+// ;
 
 
 
 
 if ($_REQUEST["method"]=="formAccountSettings") {
-    $fecha_final  = $_POST['fecha_final'];
+    // $fecha_final  = $_POST['fecha_final'];
     
-    $fecha_inicio = $_POST['fecha_inicio'];
+    // $fecha_inicio = $_POST['fecha_inicio'];
 
     $data->insertActivo($txserie, $txvalor, $txdetalle, $txmarca, $txmodelo, $txestado, $txcentro, $txdate, $txqr, $txactivo);
 }
 if ($_REQUEST["method"]=="edit") {
     $id = $_POST["id"];
-    $data->editar($id,$txactivo, $txmarca, $txmodelo, $txserie, $txvalor, $txdetalle, $txestado, $txcentro, $txdate, $txqr);
+    $data->editar($id,$txserie, $txvalor, $txdetalle, $txmarca, $txmodelo, $txestado, $txcentro, $txdate, $txqr, $txactivo);
 }
 //  $data->insertarcentroCosto($txcentro);
 header("Location:../V/ingresarActivo.php");  ///funcion para que la pagina se muestre de nuevo
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////PAGINA ASOCIADA A LA TABLA INGRESAR ACTIVO/////////////////////////////////

@@ -21,6 +21,7 @@ foreach ($rs as $i) {
     " Tipo de Activo: " .$i['activo']. " Centro de Costo: ".$i['centrocosto']. 
     " Serie: " . $i['num_serie'].
      " Marca: " .$i['marca'].    " Modelo: " .$i['modelo'];
+     ;
 
 
 }
@@ -32,18 +33,7 @@ echo($valor);
 ?>
 <!DOCTYPE html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
 
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -52,13 +42,29 @@ echo($valor);
   data-assets-path="../assets/"
   data-template="vertical-menu-template-free"
 >
-<!-- <style>
+ <style>
   .botonsito{
-    background-color: #553182;
-    
+    background-color: #696cff;
+     color: white ;
+
+    border: none;
+    box-shadow: 0 2px 4px 0 rgb(105 108 255 / 40%);
+
+transform: translateY(-1px);
+margin-right: 0.5rem !important;
+
+border: 1px solid transparent;
+    padding: 0.4375rem 1.25rem;
+    font-size: 0.9375rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease-in-out;
+
+
+
+
   }
-</style> -->
-  
+</style> 
+   
 <head>
     <meta charset="utf-8" />
     <meta
@@ -116,6 +122,37 @@ echo($valor);
  <!--Puedes descargar el script e incluirlo de manera local si así prefieres-->
  <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
 
+
+
+
+
+
+
+<style>
+
+.imagen{
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+
+}
+
+</style>
+
+<style>
+
+  .botonsito{
+
+  
+  width: 110%;
+
+
+  }
+</style>
+
+
+
   </head>
 
   <body>
@@ -132,12 +169,12 @@ echo($valor);
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="../V/index.html" class="app-brand-link">
+            <a href="../../../index.html" class="app-brand-link">
              
               <span class="app-brand-text demo menu-text fw-bolder ms-2"></span>
 
               <div class="img-container">
-              <img style="margin-left:0px" width="70%"  height="70%"    src="vendors/imagenes/logocormun.png" alt="">
+              <img style="margin-left:0px" width="70%"  height="70%"    src="../vendors/imagenes/logocormun.png" alt="">
               </div>
 
 
@@ -165,17 +202,17 @@ echo($valor);
             
             <li class="menu-item active open">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+              <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Entradas de Activos</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item active">
-                  <a href="v/ingresarActivo.php" class="menu-link">
+                  <a href="V/../ingresarActivo.php" class="menu-link">
                     <div data-i18n="Account">Ingreso Activo</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="../V/reportes.php" class="menu-link">
+                  <a href="../V/reportes/reportes.php" class="menu-link">
                     <div data-i18n="Notifications">Reporte de Activos</div>
                   </a>
                 </li>
@@ -184,17 +221,17 @@ echo($valor);
             </li>
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications">Entrada de Activos</div>
+              <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Authentications">Asignaciones de Activos</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="entregadeActivo.php" class="menu-link" target="_blank">
+                  <a href="../V/entregadeActivo.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Entrega de Activo</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="reporte_Entrega.php" class="menu-link" target="_blank">
+                  <a href="../V/reportes/reporte_Entrega.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Reporte de Entrega</div>
                   </a>
                 </li>
@@ -226,7 +263,7 @@ echo($valor);
           <!-- Navbar -->
 
           <nav
-            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            class=""
             id="layout-navbar"
           >
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
@@ -241,18 +278,7 @@ echo($valor);
               <!-- /Search -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- Place this tag where you want the button to render. -->
-                <!-- <li class="nav-item lh-1 me-3">
-                  <a
-                    class="github-button"
-                    href="https://github.com/themeselection/sneat-html-admin-template-free"
-                    data-icon="octicon-star"
-                    data-size="large"
-                    data-show-count="true"
-                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-                    >Star</a
-                  >
-                </li> -->
+              
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -334,50 +360,21 @@ echo($valor);
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="reportes.php"
-                        ><i class="bx bx-bell me-1"></i> Reporte de Activos</a
+                        >  <i class="menu-icon tf-icons bx bx-detail"></i> Reporte de Activos</a
                       >
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages-account-settings-connections.php"
-                        ><i class="bx bx-link-alt me-1"></i> Connections</a
-                      >
-                    </li>
+                    
                   </ul>
                   <div class="card mb-4">
                     <h5 class="card-header">Ingrese Activo</h5>
                     <!-- Account -->
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <!-- <img
-                          src="../vendors/assets/img/avatars/1.png"
-                          alt="user-avatar"
-                          class="d-block rounded"
-                          height="100"
-                          width="100"
-                          id="uploadedAvatar"
-                        /> -->
+                        
                         <div class="button-wrapper">
-                          <!-- <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                            <span class="d-none d-sm-block">Cargar Foto</span>
-                            <i class="bx bx-upload d-block d-sm-none"></i>
-                            <input
-                              type="file"
-                              id="upload"
-                              class="account-file-input"
-                              hidden
-                              accept="image/png, image/jpeg"
-                            /> -->
+                          
                           </label>
-                          <!-- <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                            <i class="bx bx-reset d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Resetear</span>
-                          </button> -->
-
-                          <!-- <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                            <i class="bx bx-reset d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Editar</span>
-                          </button>
-                           -->
+                         
 
                           <p class="text-muted mb-0"></p>
                         </div>
@@ -389,7 +386,11 @@ echo($valor);
 
 <!--------  -------------------------------------------FORMULARIO------------------------------------------------------------->
                       <form id="formAccountSettings" method="post"  action="../C/tablaController.php?method=formAccountSettings">
-                        
+                       
+                    
+
+
+
                       <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">Activo</label>
@@ -507,7 +508,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
 
                          </div>
                         <div class="mt-2">
-                       <button type="submit" class="btn btn-primary me-2" style="background-color:#553182" id="guardar" >Añadir Registro</button>
+                       <button type="submit" class="btn btn-primary me-2"  id="guardar" >Añadir Registro</button>
                           <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
                         </div>
                       </form>
@@ -521,27 +522,35 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
       
 
 <!------------------------------Generador qr----------------------------------------------------------------------->
-      
-      <h3>Generar Códigos QR </h3>
+
+<div class="col-md-6 col-lg-4 mb-3"  style= "margin: 0 auto"; >
+<div class="card h-400"  >
+  <br> 
+ <h3 style= "text-align: center">Generar Códigos QR </h3>
     <input hidden id="txt" type="text"value ="<?php echo $valor;?>">
     <br>
-    <img alt="Código QR" id="codigo">
+    <div class="imagen">
+    <img alt="Código QR" id="codigo" 
+                       
+                       >
     <br>
     <button type="button"    class="botonsito" id="btnDescargar">Descargar</button>
-
+    <div class="d-flex justify-content-center"  style="width: 150px;"  >
     <script>
         var valorrs = document.getElementById("txt").value;
         
         const $imagen = document.querySelector("#codigo"),
             $boton = document.querySelector("#btnDescargar");
-
+       
         new QRious({
             element: $imagen,
             value: valorrs, // La URL o el texto
-            size: 300,
+            size: 250,
             backgroundAlpha: 255, // 0 para fondo transparente
             foreground: "#553182", // Color del QR
             level: "M", // Puede ser L,M,Q y H (L es el de menor nivel, H el mayor)
+
+        
 
         });
         $boton.onclick = () => {
@@ -553,17 +562,43 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
     </script>
 
 
+</div>
 
 
+</div>                
 
-                 
-
-
+</div></div>
 
                 </div>
               </div>
             </div>
-            <!-- / Content -->
+
+             </div> <!-- / Content -->
+
+
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <!-- Footer -->
             <footer class="content-footer footer bg-footer-theme">

@@ -1,10 +1,5 @@
 
 
-
-
-
-
-
 <!DOCTYPE html>
 
 
@@ -28,7 +23,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="vendors/assets/img/favicon/favicon.ico" />
+    
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,7 +43,6 @@
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="vendors/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
     <link rel="stylesheet" href="vendors/assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
@@ -59,6 +53,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="vendors/assets/js/config.js"></script>
+    
   
   
     <style>
@@ -118,7 +113,9 @@
             <li class="menu-item active">
               <a href="index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Gestion de Activos</div>
+              
+                
+                <div data-i18n="Analytics"><strong>Gestion de Activos</strong></div>
               </a>
             </li>
 
@@ -133,12 +130,15 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
+ 
+                <i class="list-alt-add-outline"></i>
+                
                   <a href="V/ingresarActivo.php" class="menu-link">
                     <div data-i18n="Account">Ingresar Activo</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="V/reportes.php" class="menu-link">
+                  <a href="V/reportes/reportes.php" class="menu-link">
                     <div data-i18n="Notifications">Reporte de Activos</div>
                   </a>
                 </li>
@@ -147,7 +147,9 @@
             </li>
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+              <i class="menu-icon tf-icons bx bx-file"></i>
+
+
                 <div data-i18n="Authentications">Asignaciones de Activos</div>
               </a>
               <ul class="menu-sub">
@@ -157,7 +159,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="V/reporte_Entrega.php" class="menu-link" target="_blank">
+                  <a href="V/reportes/reporte_Entrega.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Reportes de Entrega</div>
                   </a>
                 </li>
@@ -209,10 +211,10 @@
                     <div class="d-flex align-items-end row">
                       <div class="col-sm-7">
                         <div class="card-body"     >
-                         <p> <h2 class="card-title text-primary"   >GESTION DE ACTIVOS</h2>
-                          <p class="mb-6"></p>
+                         <p> <h1 class="card-title text-primary"   >GESTION DE ACTIVOS</h1>
+                         <strong> <p class="mb-6"></p>
                           Has accedido al portal de Activos.
-                          </p>
+                          </p></strong>
                           <div class = "img-container">
                 <img style="margin-left:0px" width="250%"  height="250%"    src="vendors/imagenes/activos.png" alt="">
 
@@ -322,5 +324,6 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
   </body>
 </html>

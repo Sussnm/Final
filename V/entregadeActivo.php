@@ -7,6 +7,7 @@ $data = new Data($con->conectar());
 $arreglosCentros = $data->getCentros();
 
 
+
 /////QR/////////
 
 
@@ -31,6 +32,12 @@ $arreglosCentros = $data->getCentros();
   }
 </style> -->
   
+
+
+
+
+
+
 <head>
     <meta charset="utf-8" />
     <meta
@@ -42,8 +49,8 @@ $arreglosCentros = $data->getCentros();
 
     <meta name="description" content="" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../vendors/assets/img/favicon/favicon.ico" />
+    <!-- LOGOPEQUEÑ000000 -->
+    
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,12 +66,19 @@ $arreglosCentros = $data->getCentros();
     <!-- Core CSS -->
     <link rel="stylesheet" href="../vendors/assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="../vendors/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+
+
     <link rel="stylesheet" href="../vendors/assets/css/demo.css" />
+  <!-- Columnas   -->
+    <link rel="stylesheet" href="../vendors/SCSS/NUEVO/css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../vendors/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-    <!-- Page CSS -->
+    <!-- validador Rut -->
+
+    <script src="jquery.rut.js"></script>
+
 
     <!-- Helpers -->
     <script src="../vendors/assets/vendor/js/helpers.js"></script>
@@ -80,12 +94,27 @@ $arreglosCentros = $data->getCentros();
     <script src="../vendors/assets/js/config.js"></script>
 
 
-    <!--calendario---->
 
-    <!-- <link href="../vendors/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-      <script src="js/bootstrap-datetimepicker.min.js"></script> -->
+<style>
+ .card {
+  border-top-width: 10px;
+  border-right-width: 1em;
+  border-bottom-width: thick;
+  border-left-width: thin;
+}
 
- <!--Puedes descargar el script e incluirlo de manera local si así prefieres-->
+</style>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+
+
+
+
+ 
+
+
  <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
 
   </head>
@@ -109,7 +138,7 @@ $arreglosCentros = $data->getCentros();
               <span class="app-brand-text demo menu-text fw-bolder ms-2"></span>
 
               <div class="img-container">
-              <img style="margin-left:0px" width="70%"  height="70%"    src="vendors/imagenes/logocormun.png" alt="">
+              <img style="margin-left:0px" width="70%"  height="70%"    src="../vendors/imagenes/logocormun.png" alt="">
               </div>
 
 
@@ -156,12 +185,12 @@ $arreglosCentros = $data->getCentros();
             </li>
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications">Entrada de Activos</div>
+              <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Authentications">Asignaciones de Activos</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                  <a href="reporte_Entrega.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Entrega de Activo</div>
                   </a>
                 </li>
@@ -213,26 +242,11 @@ $arreglosCentros = $data->getCentros();
               <!-- /Search -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- Place this tag where you want the button to render. -->
-                <!-- <li class="nav-item lh-1 me-3">
-                  <a
-                    class="github-button"
-                    href="https://github.com/themeselection/sneat-html-admin-template-free"
-                    data-icon="octicon-star"
-                    data-size="large"
-                    data-show-count="true"
-                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-                    >Star</a
-                  >
-                </li> -->
+                
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <!-- <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                      <img src="../vendors/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                    </div>
-                  </a> -->
+               
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                       <a class="dropdown-item" href="#">
@@ -316,36 +330,11 @@ $arreglosCentros = $data->getCentros();
                     <!-- Account -->
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <!-- <img
-                          src="../vendors/assets/img/avatars/1.png"
-                          alt="user-avatar"
-                          class="d-block rounded"
-                          height="100"
-                          width="100"
-                          id="uploadedAvatar"
-                        /> -->
+                      
                         <div class="button-wrapper">
-                          <!-- <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                            <span class="d-none d-sm-block">Cargar Foto</span>
-                            <i class="bx bx-upload d-block d-sm-none"></i>
-                            <input
-                              type="file"
-                              id="upload"
-                              class="account-file-input"
-                              hidden
-                              accept="image/png, image/jpeg"
-                            /> -->
+                          
                           </label>
-                          <!-- <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                            <i class="bx bx-reset d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Resetear</span>
-                          </button> -->
-
-                          <!-- <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                            <i class="bx bx-reset d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Editar</span>
-                          </button>
-                           -->
+                         
 
                           <p class="text-muted mb-0"></p>
                         </div>
@@ -356,28 +345,35 @@ $arreglosCentros = $data->getCentros();
 
 
 <!--------  -------------------------------------------FORMULARIO------------------------------------------------------------->
-                      <form id="entregadeActivo" method="post"  action="../C/entregaCtrl.php?method=entregadeActivo">
+                      <form id="entregadeActivo" method="post"  action="../C/entregaCtrl.php">
                         
                       <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">Nombre Completo Asignatario</label>
+                            <label for="firstName" class="form-label">RUT</label>
                             <input
                               class="form-control"
-                              type="text"
-                              id="tx_usuario"
-                              name="tx_usuario"
+                              type="test"
+                              id="rut_consigna"
+                              name="rut_consigna"
                               value=""
                               autofocus
-                            
-
+                          
+                             
                             />
                       
 
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Rut</label>
-                            <input class="form-control" type="text" name="tx_rut" id="tx_rut"  size="10" value="" />
+                            <label for="lastName" class="form-label">Nombre Completo Consignatario</label>
+                            <input class="form-control" type="text" name="tx_usuCon" id="tx_usuCon"  size="10" value="" />
                           </div>
+
+                          <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">Cargo</label>
+                            <input class="form-control" type="text" name="tx_cargoConsigna" id="tx_cargoConsigna" size="10" value="" />
+                          </div>
+
+
                           <div class="mb-3 col-md-6">
                             <label for="centro" class="form-label">Centro de Costo</label>
                             <select id="tx_centro" name="tx_centro" class="select2 form-select">
@@ -389,17 +385,31 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
 				?>
                              </select>
                             
-
                           </div>
+                         
 
-    
+
+
                           <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Equipo</label>
+                            <label for="centro" class="form-label">Equipo</label>
                             <input
                               type="text"
                               class="form-control"
                               id="tx_equipo"
                               name="tx_equipo"
+                              value=""
+                            />
+                          </div>
+
+
+    
+                          <div class="mb-3 col-md-6">
+                            <label for="organization" class="form-label">Codigo Equipo</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="tx_codigoEquipo"
+                              name="tx_codigoEquipo"
                               value=""
                             />
                           </div>
@@ -417,71 +427,57 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Codigo equipo</label>
-                            <input class="form-control" type="text" name="tx_codigoQr" id="tx_codigoQr" value="" />
-                          </div>
-                          <!-- <div class="mb-3 col-md-6">
-                           <label class="form-label" for="country">Estado</label>
-                            <select id="tx_estado" name="tx_estado" class="select2 form-select">
-                              <option value="0" disabled>Select</option>
-                            
-
-				
-			
-                             </select>
-                          </div> -->
-                          
-                          <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Detalle</label>
                             <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
                           </div>
-                          <!-- <div class="mb-3 col-md-6">
-                           <label class="form-label" for="country">Centro de Costo</label>
-                            <select id="tx_centro" name="tx_centro" class="select2 form-select">
-                              <option value="0" disabled>Select</option>
- 
-                             </select>
-                          </div> -->
-                         
-<!--                         
+
+
+
+
+    <!-------EMPIEZA FORMULARIO CONSIGNATARIO--------------------------------------------------------->                      
+   
+                          
+    
+
+                      
+                     
                           <div class="mb-3 col-md-6">
-                            <label for="zipCode" class="form-label">Fecha de Recepcion</label>
-                            <input
-                              type="date"
-                              class="form-control"
-                              id="tx_date"
-                              name="tx_date"
-                            
-                              maxlength="6" >
-                          </div> -->
-
-
-                              <!-- <div class="mb-3 col-md-6">
-                            <label for="address" class="form-label">N° Registro</label>
-                         
-                          <input type="text" class="form-control" value ="" id="tx_qr" name="tx_qr"  />
-                         
-                          </div> -->
-                          
-
-                              
+                            <label for="lastName" class="form-label">Rut</label>
+                            <input class="form-control" type="text" name="tx_rutAsigna" id="tx_rutAsigna" value="" />
+                          </div>
+          
+                          <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">Nombre Completo de Asignatario</label>
+                            <input class="form-control" type="text" name="tx_nomAsigna" id="tx_nomAsigna" value="" />
+                          </div>
+                        
+                          <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">Cargo</label>
+                            <input class="form-control" type="text" name="tx_cargoAsigna" id="tx_cargosigna" value="" />
+                          </div>
 
                           
-
+                          <!-- <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">Cargo</label>
+                            <input class="form-control" type="text" name="tx_cargoAsigna" id="tx_cargosigna" value="" />
+                          </div> -->
+                        
+              <!-- ----------------------------TERMINNA EL FORM ASIGNATARIO---------------------------- -->               
+                          </div>
                          </div>
                         <div class="mt-2">
-                       <button type="submit" class="btn btn-primary me-2" style="background-color:#553182" id="guardar" >Añadir Registro</button>
-                          <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
+                       <button type="submit" class="btn btn-primary me-2"  id="guardar" >Añadir Registro</button>
+                          <button type="reset" class="btn btn-outline-secondary">Cerrar</button>
                         </div>
                       </form>
-                    </div>
-                    <!-- /Account -->
-                  </div>
-                  <div class="card">
-
                   
+                    <!-- /Account -->
+                 
+                
 
-      
+                  </div>
+
+                
 
 <!------------------------------Generador qr----------------------------------------------------------------------->
     
@@ -553,3 +549,10 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
     <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
   </body>
 </html>
+
+<!-- codigo nuevo -->
+
+
+<!---------------formulario de autocompletado---->
+
+

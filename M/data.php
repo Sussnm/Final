@@ -21,13 +21,14 @@ class Data
     }
 
 ////////////////////////////////////////////INGRESAR ACTIVOS////////////////////////////////////////////////////////////////////////////
-    public function insertActivo($txserie, $txvalor, $txdetalle, $txmarca, $txmodelo, $txestado, $txcentro, $txdate, $txqr, $txactivo)
-    {
-        $sql = "INSERT INTO tbl_activo (valor,fecha,id_estado,id_centrocosto,marca,modelo,num_serie,descripcion,qr,activo)
-                               values ($txvalor, '$txdate',1,1,'$txmarca','$txmodelo','$txserie','$txdetalle','$txqr','$txactivo' )";
+public function insertActivo($txserie, $txvalor, $txdetalle, $txmarca, $txmodelo, $txestado, $txcentro, $txdate, $txqr, $txactivo)
+{
+    $sql = "INSERT INTO tbl_activo (num_serie, valor, descripcion, marca, modelo, id_estado, id_centrocosto, fecha, qr, activo)
+                           values ('$txserie', $txvalor, '$txdetalle', '$txmarca', '$txmodelo', $txestado, $txcentro, '$txdate', '$txqr', '$txactivo' )";
 
-        $this->con->query($sql);
-    }
+    $this->con->query($sql);
+}
+
 
 /////////////////////////////////OBTENER ESTADOS//////////////////////////////////////////////////////////////////////////////
 public function getEstados()
@@ -60,6 +61,8 @@ public function getDatos()
     $sql=" SELECT   activo,marca,modelo,num_serie,valor,descripcion, tbl_estado.nombre as estado, tbl_centrocosto.nombre as centrocosto, fecha,qr,
     tbl_activo.id as id_activo from tbl_activo, tbl_estado, tbl_centrocosto
 where (tbl_activo.id_estado = tbl_estado.id) and (tbl_activo.id_centrocosto= tbl_centrocosto.id)";
+
+
 
     $rs = $this->con->query($sql);
     $arr=[];
@@ -99,12 +102,23 @@ where (tbl_activo.id_estado = tbl_estado.id) and (tbl_activo.id_centrocosto= tbl
 }
 
 
-////////////////////EDITAR//////////////////////
+////////////////////EDITAR ACTIVO//////////////////////
 
 public function editar($id, $activo, $marca, $modelo, $num_serie, $valor, $descripcion, $estado, $centrocosto, $fecha, $qr)
 {
     $sql="UPDATE tbl_activo SET activo = '$activo', marca = '$marca', modelo = '$modelo', num_serie = '$num_serie', valor= '$valor', descripcion='$descripcion', id_estado='$estado',id_centrocosto='$centrocosto', fecha='$fecha', qr='$qr'  WHERE id = '$id'";
-    
+
+
+    $this->con->query($sql);
+}
+
+
+////////////////////EDITAR ENTREGA A USUARIO//////////////////////
+
+public function editarUsuario($id, $nom_user, $rut, $id_centrocosto, $equipo, $fecha_entrega, $codigo_equipo, $detalle)
+{
+    $sql="UPDATE tbl_entrega SET nom_user = '$nom_user', rut = '$rut', id_centrocosto = '$id_centrocosto', equipo = '$equipo', fecha_entrega= '$fecha_entrega', codigo_equipo= '$codigo_equipo',detalle='$detalle'  WHERE id = '$id'";
+
 
     $this->con->query($sql);
 }
@@ -117,44 +131,44 @@ public function editar($id, $activo, $marca, $modelo, $num_serie, $valor, $descr
 
 
 
-
-
-////////////////////////////////login//////////////////////////////////////////////////////////////////////
-
-
-public function Login($usuario, $contraseña)
-{
-    $sql=
-    "SELECT COUNT(*) AS 'valido'
-    FROM tbl_usuario
-    WHERE usuario='$usuario' 
-    AND contraseña = ($contraseña)";
-
-    $rs = $this->con->query($sql);
-    foreach ($rs->fetchAll(PDO::FETCH_ASSOC) as $val) {
-        $existe = $val['valido'];
-    }
-    return $existe;
-}
 
 ///////////////////////////////ENTREGA DE ACTIVO//////////////////////////////////////
 
-public function entregarActivos($txuser, $txrut, $txcentro, $txequipo, $txfecha_entrega, $txcodigoQr, $txdetalle )
+public function entregarActivos($txusuConsigna, $txrutConsigna, $txcargoConsigna, $txcentro, $txcodigo, $txequipo, $txfecha_entrega, $txdetalle, $txtrut, $txnombreAsigna, $txcargoAsigna)
 {
-    $sql = "INSERT INTO tbl_entrega (nom_user,  rut, id_centrocosto,   equipo,  fecha_entrega, codigo_equipo, detalle)
-                           values ('$txuser','$txrut',1,   '$txequipo','$txfecha_entrega','$txcodigoQr','$txdetalle' )";
+    $sql = "INSERT INTO tbl_entrega (nombre_consignatario, rut_consignatario, cargo_consignatario,id_centrocosto, id_activo,nom_activo,  fecha_entrega, detalle, rut_asigna, nombre_asigna,cargo_asigna)
+        
+     values ('$txusuConsigna',
+     '$txrutConsigna',
+    '$txcargoConsigna',
+     $txcentro, 
+     '$txcodigo',
+     '$txequipo', 
+     '$txfecha_entrega',
+     '$txdetalle',
+     '$txtrut',
+     '$txnombreAsigna',
+     '$txcargoAsigna')";
+
 
     $this->con->query($sql);
 }
+
+
+
+
+
+
 
 //////////////////////////////REPORTE DE ENTREGA////////////////////////////////////
 
 
 public function getTabla()
 {
-    $sql=" SELECT   nom_user,rut,equipo,fecha_entrega,codigo_equipo,detalle, tbl_centrocosto.nombre as centrocosto
-    from tbl_entrega, tbl_centrocosto
-where   (tbl_entrega.id_centrocosto= tbl_centrocosto.id)";
+    $sql=" SELECT   nombre_consignatario,rut_consignatario,cargo_consignatario,  tbl_centrocosto.nombre as centrocosto,
+    id_activo,nom_activo,fecha_entrega,detalle, rut_asigna,nombre_asigna,cargo_asigna
+      from tbl_entrega, tbl_centrocosto
+  where   (tbl_entrega.id_centrocosto= tbl_centrocosto.id)";
 
     $rs = $this->con->query($sql);
     $arr=[];
@@ -164,9 +178,21 @@ where   (tbl_entrega.id_centrocosto= tbl_centrocosto.id)";
     return $arr;
 }
 
-
-
+////////////////////////////TABLA ASIGNATARIO//////////////////////////////////////
 }
+
+
+
+
+
+
+
+
+
+////////////////////////////////AUTOCOMPLETADO//////////////////////////////
+
+
+
 
 
 
