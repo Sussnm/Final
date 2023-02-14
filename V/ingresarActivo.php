@@ -26,7 +26,7 @@ foreach ($rs as $i) {
 
 }
 
-echo($valor);
+// echo($valor);
 
 
 

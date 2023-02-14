@@ -35,7 +35,7 @@ $txactivo = $_POST['tx_activo'];
 
 
 
-if ($_REQUEST["method"]=="formAccountSettings") {
+// if ($_REQUEST["method"]=="formAccountSettings") {
     // $fecha_final  = $_POST['fecha_final'];
     
     // $fecha_inicio = $_POST['fecha_inicio'];
@@ -44,7 +44,7 @@ if ($_REQUEST["method"]=="formAccountSettings") {
 
     header("Location:../V/ingresarActivo.php");
 
-}
+// }
 if ($_REQUEST["method"]=="edit") {
     $id = $_POST["id"];
     $data->editar($id,$txserie, $txvalor, $txdetalle, $txmarca, $txmodelo, $txestado, $txcentro, $txdate, $txqr, $txactivo);

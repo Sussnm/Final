@@ -76,9 +76,10 @@ where (tbl_activo.id_estado = tbl_estado.id) and (tbl_activo.id_centrocosto= tbl
   {
       // $sql=  "SELECT * FROM tbl_activo WHERE fecha BETWEEN '$fecha_inicio' AND '$fecha_final'";
 
-      $sql = "SELECT   activo,marca,modelo,num_serie,valor,descripcion, tbl_estado.nombre as estado, tbl_centrocosto.nombre as centrocosto, fecha,qr
-    from tbl_activo, tbl_estado, tbl_centrocosto
-where (tbl_activo.id_estado = tbl_estado.id) and (tbl_activo.id_centrocosto= tbl_centrocosto.id) and fecha BETWEEN '$fecha_inicio' AND '$fecha_final'";
+      $sql = "SELECT   nombre_consignatario,rut_consignatario,cargo_consignatario,  tbl_centrocosto.nombre as centrocosto,
+      id_activo,nom_activo,fecha_entrega,detalle, rut_asigna,nombre_asigna,cargo_asigna
+        from tbl_entrega, tbl_centrocosto,tbl_activo, tbl_estado
+    where   (tbl_entrega.id_centrocosto= tbl_centrocosto.id) and fecha BETWEEN '$fecha_inicio' AND '$fecha_final'";
 
       $rs = $this->con->query($sql);
       $arr=[];
@@ -87,7 +88,27 @@ where (tbl_activo.id_estado = tbl_estado.id) and (tbl_activo.id_centrocosto= tbl
       }
       return $arr;
   }
+
+
+  ///////////////////////////////////
+  public function getFechareport($fecha_inicio, $fecha_final)
+  {
+      // $sql=  "SELECT * FROM tbl_activo WHERE fecha BETWEEN '$fecha_inicio' AND '$fecha_final'";
+
+      $sql = "SELECT   activo,marca,modelo,num_serie,valor,descripcion, tbl_estado.nombre as estado, tbl_centrocosto.nombre as centrocosto, fecha,qr,
+      tbl_activo.id as id_activo from tbl_activo, tbl_estado, tbl_centrocosto
+  where (tbl_activo.id_estado = tbl_estado.id) and (tbl_activo.id_centrocosto= tbl_centrocosto.id) and fecha BETWEEN '$fecha_inicio' AND '$fecha_final'";
+
+      $rs = $this->con->query($sql);
+      $arr=[];
+      foreach ($rs->fetchAll(PDO::FETCH_BOTH) as $val) {
+          $arr[] = $val;
+      }
+      return $arr;
+  }
+///////////////////////////////////
 /////////////////////QR//////////////
+
 public function getActivo()
 {
     $sql="SELECT a.id,activo,marca,modelo,num_serie,valor,descripcion, tbl_estado.nombre as estado, tbl_centrocosto.nombre as centrocosto, fecha,qr
@@ -117,7 +138,7 @@ public function editar($id, $activo, $marca, $modelo, $num_serie, $valor, $descr
 
 public function editarEntrega($id,$txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega, $txdetalle, $txtrut,$txnombreAsigna, $txcargoAsigna)
 {
-    $sql="UPDATE tbl_entrega SET nombre_consignatario = '$txusuConsigna', rut_consignatario = '$txrutConsigna', cargo_consignatario = '$txcargoConsigna',id_centrocosto = '$txcentro', id_activo = '$txcodigo', nom_activo= '$txequipo', fecha_entrega= '$txfecha_entrega',detalle='$txdetalle', rut_asigna= '$txtrut', nombre_asigna= '$txnombreAsigna', cargo_asigna='$txcargoAsigna'  WHERE id_activo = '$id'";
+    $sql="UPDATE tbl_entrega SET nombre_consignatario = '$txusuConsigna', rut_consignatario = '$txrutConsigna', cargo_consignatario = '$txcargoConsigna',id_centrocosto = '$txcentro', id_activo = '$txcodigo', nom_activo= '$txequipo', fecha_entrega= '$txfecha_entrega',detalle='$txdetalle', rut_asigna= '$txtrut', nombre_asigna= '$txnombreAsigna', cargo_asigna='$txcargoAsigna'  WHERE id = '$id'";
 
 
     $this->con->query($sql);
