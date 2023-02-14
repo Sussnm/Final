@@ -505,7 +505,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$
                         
                           <div class="mb-3 col-md-6">
                           <label for="lastName" class="form-label">Cargo</label>
-                            <input class="form-control" type="text" name="tx_cargoAsigna" id="tx_cargosigna"  value="<?php  echo $_REQUEST['cargo_asigna']?>" />
+                            <input class="form-control" type="text" name="tx_cargoAsigna" id="tx_cargoAsigna"  value="<?php  echo $_REQUEST['cargo_asigna']?>" />
                           </div>
 
 <!--                           

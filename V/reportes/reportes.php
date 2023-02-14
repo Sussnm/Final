@@ -183,8 +183,8 @@ $data = new Data($con->conectar());
           <!-- Navbar -->
 
           <nav
-            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar"
+            class=""
+            id=""
           >
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
               <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
@@ -236,9 +236,9 @@ $data = new Data($con->conectar());
                     
 
                     <li class="nav-item">
-                      <a class="nav-link" <a href="V/generarExcel.php" class="title--edit">
+                      <a class="nav-link"  href="V/generarExcel.php" class="title--edit">
                       
-                        <i class="bx bx-link-alt me-1"></i> Generar Excel</a
+                        <i class="bx bx-link-alt me-1"></i> Generar Excel</
                       >
                    
                     </li>

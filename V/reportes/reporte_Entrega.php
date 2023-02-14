@@ -66,7 +66,7 @@ $data = new Data($con->conectar());
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../../vendors/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
+    <link rel="stylesheet" href="../../vendors/assets/vendor/libs/apex-charts/apex-charts.css" />
     <!-- FONTS -->
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
@@ -136,18 +136,18 @@ $data = new Data($con->conectar());
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="ingresarActivo.php" class="menu-link">
+                  <a href="../ingresarActivo.php" class="menu-link">
                     <div data-i18n="Account">Ingresar Activo</div>
                   </a>
                 </li>
                 <li class="menu-item active">
-                  <a href="reporte/reportes.php" class="menu-link">
+                  <a href="reportes.php" class="menu-link">
                     <div data-i18n="Notifications">Reporte de Activos</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   
-                  <a href="entregadeActivo.php" class="menu-link">
+                  <a href="..\..\V\entregadeActivo.php" class="menu-link">
                   
                   <i class="menu-icon tf-icons bx bx-file"></i>
 
@@ -163,7 +163,7 @@ $data = new Data($con->conectar());
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                  <a href="\V\reporte\reporte_Entrega.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Reportes de Entrega</div>
                   </a>
                 </li>
@@ -308,7 +308,7 @@ $data = new Data($con->conectar());
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
+                         
                           <?php
 if(empty($_GET['fecha_inicio'])){
 
@@ -450,10 +450,8 @@ if(empty($_GET['fecha_inicio'])){
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / SCRIPTS DE LA TABLA-->
-  
-    <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-        <script src="../../vendors/js/tabla_ejemplo.js"></script>
-
+    <script src="../../vendors/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    
 
 
    
@@ -476,6 +474,11 @@ if(empty($_GET['fecha_inicio'])){
     <!-- Page JS -->
 
     <!-- Place this tag in your head or just before your close body tag. -->
+
+    <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+        <script src="../../vendors/js/tabla_ejemplo.js"></script>
+
+
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>

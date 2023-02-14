@@ -176,7 +176,7 @@ $arreglosCentros = $data->getCentros();
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="../V/reportes.php" class="menu-link">
+                <a href="reportes/reportes.php" class="menu-link">
                     <div data-i18n="Notifications">Reporte de Activos</div>
                   </a>
                 </li>
@@ -190,12 +190,12 @@ $arreglosCentros = $data->getCentros();
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="reporte_Entrega.php" class="menu-link" target="_blank">
+                  <a href="entregadeActivo.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Entrega de Activo</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="reporte_Entrega.php" class="menu-link" target="_blank">
+                  <a href="reportes/reporte_Entrega.php" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Reporte de Entrega</div>
                   </a>
                 </li>
@@ -345,7 +345,7 @@ $arreglosCentros = $data->getCentros();
 
 
 <!--------  -------------------------------------------FORMULARIO------------------------------------------------------------->
-                      <form id="entregadeActivo" method="post"  action="../C/entregaCtrl.php">
+                      <form id="entregadeActivo" method="post"  action="../C/entregaCtrl.php"?method=entregadeActivo>
                         
                       <div class="row">
                           <div class="mb-3 col-md-6">
@@ -453,7 +453,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                         
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Cargo</label>
-                            <input class="form-control" type="text" name="tx_cargoAsigna" id="tx_cargosigna" value="" />
+                            <input class="form-control" type="text" name="tx_cargoAsigna" id="tx_cargoAsigna" value="" />
                           </div>
 
                           

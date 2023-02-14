@@ -48,11 +48,19 @@ echo $txcargoAsigna;
   
 //   $fecha_inicio = $_POST['fecha_inicio'];
 
-//   $data->entregarActivos($txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega,  $txdetalle,$txtrut,$txnombreAsigna,$txcargoAsigna);
+  // $data->entregarActivos($txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega,  $txdetalle,$txtrut,$txnombreAsigna,$txcargoAsigna);
 
 
 
 // }
+
+
+
+
+  $data->entregarActivos($txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega, $txdetalle, $txtrut,$txnombreAsigna, $txcargoAsigna);
+  header("Location:../V/entregadeActivo.php");
+
+
 
 
 if ($_POST["metodo"]=="editar") {
@@ -72,3 +80,5 @@ if ($_POST["metodo"]=="editar") {
 
 
 ///////////////////////////PAGINA ASOCIADA A LA TABLA ENTREGA DE ACTIVO A USUARIO/////////////////////////
+
+

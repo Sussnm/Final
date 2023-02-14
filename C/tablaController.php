@@ -41,6 +41,9 @@ if ($_REQUEST["method"]=="formAccountSettings") {
     // $fecha_inicio = $_POST['fecha_inicio'];
 
     $data->insertActivo($txserie, $txvalor, $txdetalle, $txmarca, $txmodelo, $txestado, $txcentro, $txdate, $txqr, $txactivo);
+
+    header("Location:../V/ingresarActivo.php");
+
 }
 if ($_REQUEST["method"]=="edit") {
     $id = $_POST["id"];
@@ -50,7 +53,15 @@ if ($_REQUEST["method"]=="edit") {
 
 }
 //  $data->insertarcentroCosto($txcentro);
-header("Location:../V/ingresarActivo.php");  ///funcion para que la pagina se muestre de nuevo
+  ///funcion para que la pagina se muestre de nuevo
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 
 
 

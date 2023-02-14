@@ -20,7 +20,7 @@ foreach ($rs as $i) {
     " Detalle: " .$i['descripcion']. " Estado: " .$i['estado']. 
     " Tipo de Activo: " .$i['activo']. " Centro de Costo: ".$i['centrocosto']. 
     " Serie: " . $i['num_serie'].
-     " Marca: " .$i['marca'].    " Modelo: " .$i['modelo'];
+     " Marca: " .$i['marca'].    " Modelo: " .$i['modelo'].": correlativo 000".$i['id'];
      ;
 
 
@@ -495,9 +495,9 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
 
 
                               <div class="mb-3 col-md-6">
-                            <label for="address" class="form-label">N° Registro</label>
+                          
                             <!-- <input type="text" class="form-control" value ="<?php echo $valor;?>" id="tx_qr" name="tx_qr"  /> -->
-                          <input type="text" class="form-control" value ="" id="tx_qr" name="tx_qr"  />
+                          <input type="hidden" class="form-control" value ="" id="tx_qr" name="tx_qr"  />
                          
                           </div>
                           
