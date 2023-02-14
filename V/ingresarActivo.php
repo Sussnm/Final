@@ -398,7 +398,7 @@ border: 1px solid transparent;
                               class="form-control"
                               type="text"
                               id="tx_activo"
-                              name="tx_activo"
+                              name="tx_activo"  required
                               value=""
                               autofocus
                             
@@ -417,7 +417,7 @@ border: 1px solid transparent;
                               class="form-control"
                               type="text"
                               id="tx_modelo"
-                              name="tx_modelo"
+                              name="tx_modelo"  required
                               value=""
                               
                             />
@@ -432,7 +432,7 @@ border: 1px solid transparent;
                               type="text"
                               class="form-control"
                               id="tx_serie"
-                              name="tx_serie"
+                              name="tx_serie"  required
                               value=""
                             />
                           </div>
@@ -444,14 +444,14 @@ border: 1px solid transparent;
                               class="form-control"
                               type="text"
                               id="tx_valor"
-                              name="tx_valor"
+                              name="tx_valor"  required
                               value=""
                               autofocus
                             />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Detalle</label>
-                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
+                            <input class="form-control" type="text" name="tx_detalle"  required id="tx_detalle" value="" />
                           </div>
                           <div class="mb-3 col-md-6">
                            <label class="form-label" for="country">Estado</label>
@@ -471,7 +471,7 @@ echo'<option value="'.$arreglosEstados[$i][0].'">'.$arreglosEstados[$i][1].'</op
                           </div> -->
                           <div class="mb-3 col-md-6">
                            <label class="form-label" for="country">Centro de Costo</label>
-                            <select id="tx_centro" name="tx_centro" class="select2 form-select">
+                            <select id="tx_centro" name="tx_centro"  required   class="select2 form-select">
                               <option value="0" disabled>Select</option>
                               <?php
 for($i = 0; $i < count($arreglosCentros); $i++){
@@ -488,7 +488,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                               type="date"
                               class="form-control"
                               id="tx_date"
-                              name="tx_date"
+                              name="tx_date" required
                             
                               maxlength="6" >
                           </div>
@@ -497,7 +497,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                               <div class="mb-3 col-md-6">
                           
                             <!-- <input type="text" class="form-control" value ="<?php echo $valor;?>" id="tx_qr" name="tx_qr"  /> -->
-                          <input type="hidden" class="form-control" value ="" id="tx_qr" name="tx_qr"  />
+                          <input type="hidden" class="form-control" value ="" id="tx_qr" name="tx_qr"  required   />
                          
                           </div>
                           
@@ -508,7 +508,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
 
                          </div>
                         <div class="mt-2">
-                       <button type="submit" class="btn btn-primary me-2"  id="guardar" >Añadir Registro</button>
+                       <button type="submit" class="btn btn-primary me-2"  id="guardar"  >Añadir Registro</button>
                           <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
                         </div>
                       </form>

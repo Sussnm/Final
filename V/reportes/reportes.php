@@ -236,7 +236,7 @@ $data = new Data($con->conectar());
                     
 
                     <li class="nav-item">
-                      <a class="nav-link"  href="V/generarExcel.php" class="title--edit">
+                      <a class="nav-link"  href="" class="title--edit">
                       
                         <i class="bx bx-link-alt me-1"></i> Generar Excel</
                       >

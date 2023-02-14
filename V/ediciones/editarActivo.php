@@ -393,7 +393,7 @@ foreach ($rs as $i) {
                               class="form-control"
                               type="text"
                               id="tx_activo"
-                              name="tx_activo"
+                              name="tx_activo"  required
                               value="<?php  echo $_REQUEST['activo']?>"
                               autofocus
                             
@@ -406,7 +406,7 @@ foreach ($rs as $i) {
                           <input type="hidden" name="id" value="<?php echo $_REQUEST['id']?>">
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Marca</label>
-                            <input class="form-control" type="text" name="tx_marca" id="tx_marca" value="<?php  echo $_REQUEST['marca']?>" />
+                            <input class="form-control" type="text" name="tx_marca"  required id="tx_marca" value="<?php  echo $_REQUEST['marca']?>" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">Modelo</label>
@@ -414,7 +414,7 @@ foreach ($rs as $i) {
                               class="form-control"
                               type="text"
                               id="tx_modelo"
-                              name="tx_modelo"
+                              name="tx_modelo"  required
                               value="<?php  echo $_REQUEST['modelo']?>"
                               
                             />
@@ -429,7 +429,7 @@ foreach ($rs as $i) {
                               type="text"
                               class="form-control"
                               id="tx_serie"
-                              name="tx_serie"
+                              name="tx_serie"  required
                               value="<?php  echo $_REQUEST['num_serie']?>"
                             />
                           </div>
@@ -441,18 +441,18 @@ foreach ($rs as $i) {
                               class="form-control"
                               type="text"
                               id="tx_valor"
-                              name="tx_valor"
+                              name="tx_valor"  required
                               value="<?php  echo $_REQUEST['valor']?>"
                               autofocus
                             />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Detalle</label>
-                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="<?php  echo $_REQUEST['descripcion']?>" />
+                            <input class="form-control" type="text" name="tx_detalle"  required id="tx_detalle" value="<?php  echo $_REQUEST['descripcion']?>" />
                           </div>
                           <div class="mb-3 col-md-6">
                            <label class="form-label" for="country">Estado</label>
-                            <select id="tx_estado" name="tx_estado" class="select2 form-select">
+                            <select id="tx_estado" name="tx_estado"  class="select2 form-select">
                               <option value="0" disabled>Select</option>
                               <?php
 for($i = 0; $i < count($arreglosEstados); $i++){
@@ -485,16 +485,16 @@ echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$
                               type="date"
                               class="form-control"
                               id="tx_date"
-                              name="tx_date"
+                              name="tx_date"  required
                               value="<?php  echo $_REQUEST['fecha']?>"
                               maxlength="6" >
                           </div>
 
 
                               <div class="mb-3 col-md-6">
-                            <label for="address" class="form-label">N° Registro</label>
+                           
                             <!-- <input type="text" class="form-control" value ="<?php echo $valor;?>" id="tx_qr" name="tx_qr"  /> -->
-                          <input type="text" class="form-control" id="tx_qr" name="tx_qr"   value="<?php  echo $_REQUEST['qr']?>" />
+                          <input type="hidden" class="form-control" id="tx_qr" name="tx_qr"   value="<?php  echo $_REQUEST['qr']?>" />
                          
                           </div>
                           
@@ -506,6 +506,8 @@ echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$
                          </div>
                         <div class="mt-2">
                        <button type="submit" class="btn btn-primary me-2" style="background-color:#553182" id="guardar" >Editar Registro</button>
+                       <p>&nbsp;</p>
+      <p class="text-info" id="msgerror"></p>
                           <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
                         </div>
                       </form>

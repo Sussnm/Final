@@ -77,8 +77,8 @@ $arreglosCentros = $data->getCentros();
 
     <!-- validador Rut -->
 
-    <script src="jquery.rut.js"></script>
-
+   
+    <script src="../vendors/js/ValidarRut.js"></script>
 
     <!-- Helpers -->
     <script src="../vendors/assets/vendor/js/helpers.js"></script>
@@ -227,8 +227,8 @@ $arreglosCentros = $data->getCentros();
           <!-- Navbar -->
 
           <nav
-            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar"
+            class=""
+            id=""
           >
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
               <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
@@ -354,9 +354,11 @@ $arreglosCentros = $data->getCentros();
                               class="form-control"
                               type="test"
                               id="rut_consigna"
-                              name="rut_consigna"
+                              name="rut_consigna"required
+                              maxlength="12"
                               value=""
                               autofocus
+                              required
                           
                              
                             />
@@ -365,12 +367,12 @@ $arreglosCentros = $data->getCentros();
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Nombre Completo Consignatario</label>
-                            <input class="form-control" type="text" name="tx_usuCon" id="tx_usuCon"  size="10" value="" />
+                            <input class="form-control" type="text" name="tx_usuCon"  required  id="tx_usuCon"  size="10" value="" />
                           </div>
 
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Cargo</label>
-                            <input class="form-control" type="text" name="tx_cargoConsigna" id="tx_cargoConsigna" size="10" value="" />
+                            <input class="form-control" type="text" name="tx_cargoConsigna"  required  id="tx_cargoConsigna" size="10" value="" />
                           </div>
 
 
@@ -396,7 +398,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                               type="text"
                               class="form-control"
                               id="tx_equipo"
-                              name="tx_equipo"
+                              name="tx_equipo" required
                               value=""
                             />
                           </div>
@@ -409,7 +411,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                               type="text"
                               class="form-control"
                               id="tx_codigoEquipo"
-                              name="tx_codigoEquipo"
+                              name="tx_codigoEquipo" required
                               value=""
                             />
                           </div>
@@ -421,14 +423,14 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                               class="form-control"
                               type="date"
                               id="tx_fechaentrega"
-                              name="tx_fechaentrega"
+                              name="tx_fechaentrega"   required
                               value=""
                               autofocus
                             />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Detalle</label>
-                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
+                            <input class="form-control" type="text" name="tx_detalle"  required   id="tx_detalle" value="" />
                           </div>
 
 
@@ -466,7 +468,9 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                           </div>
                          </div>
                         <div class="mt-2">
-                       <button type="submit" class="btn btn-primary me-2"  id="guardar" >Añadir Registro</button>
+                       <button type="submit" class="btn btn-primary me-2"  id="btnvalida"  >Añadir Registro</button>
+                       <p class="text-info" id="msgerror"></p>
+
                           <button type="reset" class="btn btn-outline-secondary">Cerrar</button>
                         </div>
                       </form>

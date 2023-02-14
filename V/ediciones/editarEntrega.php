@@ -408,6 +408,7 @@ $arreglosCentros = $data->getCentros();
                               id="rut_consigna"
                               name="rut_consigna"
                               value="<?php  echo $_REQUEST['rut_consignatario']?>"
+                              maxlength="12"
                               autofocus
                           
                              
