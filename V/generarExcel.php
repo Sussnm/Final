@@ -1,7 +1,11 @@
 
 <?php
 
-require 'vendor/composer/autoload.php';
+// header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+// header('Content-Disposition: attachment;filename="myfile.xls"');
+// header('Cache-Control: max-age=0');
+
+require '../vendor/autoload.php';
 include_once "../M/conexion.php";
 
 include_once "../M/data.php";
@@ -12,6 +16,22 @@ $data = new Data($con->conectar());
 
 
 use PhpOffice\PhpSpreadsheet\{Spreadsheet, IOFactory};
+// use PhpOffice\PhpSpreadsheet\Spreadsheet;
+// use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+
+// $spreadsheet = new Spreadsheet();
+// $sheet = $spreadsheet->getActiveSheet();
+// $sheet->setCellValue('A1', 'Hello World !');
+
+// $writer = new Xlsx($spreadsheet);
+// $writer->save('myfile.xls');
+
+
+
+
+
+
 
 
 $datos= $data->getDatos();
@@ -34,24 +54,25 @@ $hojaActiva->setCellValue('I1', 'fecha de Recepcion');
 $hojaActiva->setCellValue('J1', 'serie');
 
 $fila= 2;
+// echo json_encode($datos);
 foreach($datos as $dato){
-$hojaactiva->setCellValue('A'.$fila,$dato['activo']);
-$hojaactiva->setCellValue('B'.$fila,$dato['marca']);
-$hojaactiva->setCellValue('C'.$fila,$dato['modelo']);
-$hojaactiva->setCellValue('D'.$fila,$dato['serie']);
-$hojaactiva->setCellValue('E'.$fila,$dato['valor']);
-$hojaactiva->setCellValue('F'.$fila,$dato['detalle']);
-$hojaactiva->setCellValue('J'.$fila,$dato['id_estado']);
-$hojaactiva->setCellValue('G'.$fila,$dato['id_centrocosto']);
-$hojaactiva->setCellValue('H'.$fila,$dato['fecha']);
-$hojaactiva->setCellValue('I'.$fila,$dato['num_serie']);
+$hojaActiva->setCellValue('A'.$fila,$dato['activo']);
+$hojaActiva->setCellValue('B'.$fila,$dato['marca']);
+$hojaActiva->setCellValue('C'.$fila,$dato['modelo']);
+$hojaActiva->setCellValue('D'.$fila,$dato['num_serie']);
+$hojaActiva->setCellValue('E'.$fila,$dato['valor']);
+$hojaActiva->setCellValue('F'.$fila,$dato['descripcion']);
+$hojaActiva->setCellValue('J'.$fila,$dato['estado']);
+$hojaActiva->setCellValue('G'.$fila,$dato['centrocosto']);
+$hojaActiva->setCellValue('H'.$fila,$dato['fecha']);
+$hojaActiva->setCellValue('I'.$fila,$dato['num_serie']);
 $fila++;
 
 }
 
 
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment;filename="reporte.xlsx"');
+header('Content-Disposition: attachment;filename="reporte.xls"');
 header('Cache-Control: max-age=0');
 
 $writer = IOFactory::createWriter($excel, 'Xlsx');

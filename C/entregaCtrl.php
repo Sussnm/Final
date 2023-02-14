@@ -34,25 +34,32 @@ echo $txcargoAsigna;
 
 
 
-$data->entregarActivos($txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega,  $txdetalle,$txtrut , $txnombreAsigna, $txcargoAsigna );
+// $data->entregarActivos($txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega,  $txdetalle,$txtrut , $txnombreAsigna, $txcargoAsigna );
 //  $data->insertarcentroCosto($txcentro);
  ///funcion para que la pagina se muestre de nuevo
-header("Location: ../V/entregadeActivo.php");
-// header("Location:../V/ediciones/editarEntrega.php");
 
 
 
 
-if ($_REQUEST["method"]=="entregadeActivo") {
-  $fecha_final  = $_POST['fecha_final'];
+
+
+// if ($_REQUEST["method"]=="entregadeActivo") {
+//   $fecha_final  = $_POST['fecha_final'];
   
-  $fecha_inicio = $_POST['fecha_inicio'];
+//   $fecha_inicio = $_POST['fecha_inicio'];
 
-  $data->insertActivo($txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega,  $txdetalle,$txtrut , $txnombreAsigna, $txcargoAsigna);
-}
-if ($_REQUEST["method"]=="edit") {
-  $id = $_POST["id"];
-  $data->editarUsuario($id,$txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega,  $txdetalle,$txtrut , $txnombreAsigna, $txcargoAsigna);
+//   $data->entregarActivos($txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega,  $txdetalle,$txtrut,$txnombreAsigna,$txcargoAsigna);
+
+
+
+// }
+
+
+if ($_POST["metodo"]=="editar") {
+  $id = $_POST["id_activo"];
+  $data->editarEntrega($id,$txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega, $txdetalle, $txtrut,$txnombreAsigna, $txcargoAsigna);
+  header("Location: ../V/reportes/reporte_Entrega.php");
+
 }
 
 

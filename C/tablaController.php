@@ -45,6 +45,9 @@ if ($_REQUEST["method"]=="formAccountSettings") {
 if ($_REQUEST["method"]=="edit") {
     $id = $_POST["id"];
     $data->editar($id,$txserie, $txvalor, $txdetalle, $txmarca, $txmodelo, $txestado, $txcentro, $txdate, $txqr, $txactivo);
+
+    header("Location: ../V/reportes/reporte.php");
+
 }
 //  $data->insertarcentroCosto($txcentro);
 header("Location:../V/ingresarActivo.php");  ///funcion para que la pagina se muestre de nuevo

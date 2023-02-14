@@ -285,7 +285,7 @@ $data = new Data($con->conectar());
                       <div class="error"></div>
                     </div>
                     <div class="table-responsive">
-                      <table class="table table-striped table-bordered"   id="tabla_resultado">
+                      <table class="table table-striped table-bordered"   id="tablaresultado">
                         <thead>
                           <tr>
 
@@ -453,7 +453,6 @@ if(empty($_GET['fecha_inicio'])){
   
     <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
         <script src="../../vendors/js/tabla_ejemplo.js"></script>
-
 
 
 

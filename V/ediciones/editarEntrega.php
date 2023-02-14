@@ -389,11 +389,15 @@ $arreglosCentros = $data->getCentros();
 
 
 <!--------  -------------------------------------------FORMULARIO------------------------------------------------------------->
-                      <form id="entregadeActivo" method="post"  action="\C\entregaCtrl.php">
+                      <form id="entregadeActivo" method="post"  action="\Final\C\entregaCtrl.php">
                         
-
-                      <input type="hidden" name="id" value="<?php echo $_REQUEST['id']?>">
-                     
+                      
+                      <input type="hidden" name="id_activo" value="<?php  echo $_REQUEST['id_activo']?>"/>
+                      <input type="hidden"
+                              id="metodo"
+                              name="metodo"
+                              value="editar"
+                            />
                         
                       <div class="row">
                           <div class="mb-3 col-md-6">

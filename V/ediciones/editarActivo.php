@@ -384,7 +384,7 @@ foreach ($rs as $i) {
 
 
 <!--------  -------------------------------------------FORMULARIO------------------------------------------------------------->
-                      <form id="formAccountSettings" method="post"  action="../C/tablaController.php?method=edit">
+                      <form id="formAccountSettings" method="post"  action="\Final\C\tablaController.php?method=edit">
                         
                       <div class="row">
                           <div class="mb-3 col-md-6">

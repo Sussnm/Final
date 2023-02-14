@@ -115,9 +115,9 @@ public function editar($id, $activo, $marca, $modelo, $num_serie, $valor, $descr
 
 ////////////////////EDITAR ENTREGA A USUARIO//////////////////////
 
-public function editarUsuario($id, $nom_user, $rut, $id_centrocosto, $equipo, $fecha_entrega, $codigo_equipo, $detalle)
+public function editarEntrega($id,$txusuConsigna,$txrutConsigna, $txcargoConsigna, $txcentro,$txcodigo,  $txequipo,  $txfecha_entrega, $txdetalle, $txtrut,$txnombreAsigna, $txcargoAsigna)
 {
-    $sql="UPDATE tbl_entrega SET nom_user = '$nom_user', rut = '$rut', id_centrocosto = '$id_centrocosto', equipo = '$equipo', fecha_entrega= '$fecha_entrega', codigo_equipo= '$codigo_equipo',detalle='$detalle'  WHERE id = '$id'";
+    $sql="UPDATE tbl_entrega SET nombre_consignatario = '$txusuConsigna', rut_consignatario = '$txrutConsigna', cargo_consignatario = '$txcargoConsigna',id_centrocosto = '$txcentro', id_activo = '$txcodigo', nom_activo= '$txequipo', fecha_entrega= '$txfecha_entrega',detalle='$txdetalle', rut_asigna= '$txtrut', nombre_asigna= '$txnombreAsigna', cargo_asigna='$txcargoAsigna'  WHERE id_activo = '$id'";
 
 
     $this->con->query($sql);
