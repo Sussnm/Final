@@ -190,7 +190,7 @@ $arreglosCentros = $data->getCentros();
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="../V/index.html" class="app-brand-link">
+         <!-- <a href="../index.php" class="app-brand-link"> -->
              
               <span class="app-brand-text demo menu-text fw-bolder ms-2"></span>
 
@@ -208,20 +208,20 @@ $arreglosCentros = $data->getCentros();
 
           <div class="menu-inner-shadow"></div>
 
-          <ul class="menu-inner py-1">
+          <!-- <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item">
+            <!-- <li class="menu-item">
               <a href="../index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Gestion de Activos</div>
               </a>
-            </li>
+            </li> -->
 
             <!-- Layouts -->
            
 
             
-            <li class="menu-item active open">
+            <!-- <li class="menu-item active open">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Entradas de Activos</div>
@@ -258,7 +258,7 @@ $arreglosCentros = $data->getCentros();
                 </li>
                 
               </ul>
-            </li>
+            </li> -->
             
             <!-- Components -->
            
@@ -276,7 +276,7 @@ $arreglosCentros = $data->getCentros();
             <!-- Misc -->
             
           </ul>
-        </aside>
+        </aside> -->
         <!-- / Menu -->
 
         <!-- Layout container -->
@@ -366,6 +366,7 @@ $arreglosCentros = $data->getCentros();
                       <a class="nav-link" href="reporte_Entrega.php"
                         ><i class="bx bx-bell me-1"></i> Reporte de Entrega</a
                       >
+
                     </li>
                     
                   </ul>
@@ -389,15 +390,10 @@ $arreglosCentros = $data->getCentros();
 
 
 <!--------  -------------------------------------------FORMULARIO------------------------------------------------------------->
-                      <form id="entregadeActivo" method="post"  action="\Final\C\entregaCtrl.php">
+                      <form id="entregadeActivo" method="post"  action="\Final\C\CtrlEntrega.php" >
                         
-                      
-                      <input type="hidden" name="id_activo" value="<?php  echo $_REQUEST['id_activo']?>"/>
-                      <input type="hidden"
-                              id="metodo"
-                              name="metodo"
-                              value="editar"
-                            />
+                      <input type="hidden" name="id" id="id" value="<?php  echo $_REQUEST['id']?>"/>
+
                         
                       <div class="row">
                           <div class="mb-3 col-md-6">
@@ -481,11 +477,11 @@ echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Detalle</label>
-                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle"  value="<?php  echo $_REQUEST['detalle']?>" />
-                          </div>
+      <label class="form-label" for="country">Detalle</label>
+      <textarea class="form-control" name="tx_detalle" required id="tx_detalle"><?php echo $_REQUEST['detalle']; ?></textarea>
+    </div>
 
-
+     
 
 
     <!-------EMPIEZA FORMULARIO CONSIGNATARIO--------------------------------------------------------->                      
@@ -520,7 +516,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$
                          </div>
                         <div class="mt-2">
                        <button type="submit" class="btn btn-primary me-2"  id="guardar"  >Añadir Registro</button>
-                          <button type="reset" class="btn btn-outline-secondary">Cerrar</button>
+                         
                         </div>
                       </form>
                     </div>

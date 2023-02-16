@@ -30,14 +30,19 @@ foreach ($rs as $i) {
  
 
    
-   $valor =" Valor: " .$i['valor']. " Fecha: " .$i['fecha']. 
-   " Detalle: " .$i['descripcion']. " Estado: " .$i['estado']. 
-   " Tipo de Activo: " .$i['activo']. " Centro de Costo: ".$i['centrocosto']. 
-   " Serie: " . $i['num_serie'].
-    " Marca: " .$i['marca'].    " Modelo: " .$i['modelo'];
+  $valor =" Valor: " .$i['valor']. " Fecha: " .$i['fecha']. 
+  " Detalle: " .$i['descripcion']. " Estado: " .$i['estado']. 
+  " Tipo de Activo: " .$i['activo']. " Centro de Costo: ".$i['centrocosto']. 
+  " Serie: " . $i['num_serie'].
+   " Marca: " .$i['marca'].    " Modelo: " .$i['modelo'].": correlativo 000".$i['id'];
+   ;
 
 
 }
+
+
+
+
 
 ?>
 <html
@@ -47,13 +52,52 @@ foreach ($rs as $i) {
   data-theme="theme-default"
   data-assets-path="../assets/"
   data-template="vertical-menu-template-free"
+
+
+  
 >
-<!-- <style>
+
+<style>
+
+.imagen{
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+
+}
+
+</style>
+
+
+
+
+<style>
   .botonsito{
-    background-color: #553182;
-    
+    background-color: #696cff;
+     color: white ;
+
+    border: none;
+    box-shadow: 0 2px 4px 0 rgb(105 108 255 / 40%);
+
+transform: translateY(-1px);
+margin-right: 0.5rem !important;
+
+border: 1px solid transparent;
+    padding: 0.4375rem 1.25rem;
+    font-size: 0.9375rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease-in-out;
+
+    width: 110%;
+
+
   }
-</style> -->
+</style> 
+
+
+
+
   
 <head>
     <meta charset="utf-8" />
@@ -128,7 +172,7 @@ foreach ($rs as $i) {
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="../V/index.html" class="app-brand-link">
+          <!-- <a href="/../V/reportes/index.php" class="app-brand-link"> -->
              
               <span class="app-brand-text demo menu-text fw-bolder ms-2"></span>
 
@@ -148,18 +192,18 @@ foreach ($rs as $i) {
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item">
+            <!-- <li class="menu-item">
               <a href="../index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Gestion de Activos</div>
               </a>
-            </li>
+            </li> -->
 
             <!-- Layouts -->
            
 
             
-            <li class="menu-item active open">
+            <!-- <li class="menu-item active open">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Entradas de Activos</div>
@@ -196,7 +240,7 @@ foreach ($rs as $i) {
                 </li>
                 
               </ul>
-            </li>
+            </li> -->
             
             <!-- Components -->
            
@@ -222,7 +266,7 @@ foreach ($rs as $i) {
           <!-- Navbar -->
 
           <nav
-            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            class=""
             id="layout-navbar"
           >
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
@@ -384,7 +428,7 @@ foreach ($rs as $i) {
 
 
 <!--------  -------------------------------------------FORMULARIO------------------------------------------------------------->
-                      <form id="formAccountSettings" method="post"  action="\Final\C\tablaController.php?method=edit">
+                      <form id="formAccountSettings" method="post"  action="\Final\C\ediActiCtrl.php" method= "editar">
                         
                       <div class="row">
                           <div class="mb-3 col-md-6">
@@ -404,6 +448,7 @@ foreach ($rs as $i) {
                           </div>
 
                           <input type="hidden" name="id" value="<?php echo $_REQUEST['id']?>">
+                         
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Marca</label>
                             <input class="form-control" type="text" name="tx_marca"  required id="tx_marca" value="<?php  echo $_REQUEST['marca']?>" />
@@ -447,8 +492,15 @@ foreach ($rs as $i) {
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Detalle</label>
-                            <input class="form-control" type="text" name="tx_detalle"  required id="tx_detalle" value="<?php  echo $_REQUEST['descripcion']?>" />
+                            <label for="lastName" class="form-label">Centro de Costo</label>
+                            <select id="tx_centro" name="tx_centro" class="select2 form-select">
+                              <option value="0" disabled>Select</option>
+                              <?php
+for($i = 0; $i < count($arreglosCentros); $i++){
+echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$arreglosCentros[$i][0] || $_REQUEST["centrocosto"]==$arreglosCentros[$i][1]?"selected":"").'>'.$arreglosCentros[$i][1].'</option>';
+				}
+				?>
+                             </select>
                           </div>
                           <div class="mb-3 col-md-6">
                            <label class="form-label" for="country">Estado</label>
@@ -462,21 +514,11 @@ echo'<option value="'.$arreglosEstados[$i][0].'"  '.($_REQUEST["estado"]==$arreg
                              </select>
                           </div>
                           
-                          <!-- <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Detalle</label>
-                            <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
-                          </div> -->
+                          
                           <div class="mb-3 col-md-6">
-                           <label class="form-label" for="country">Centro de Costo</label>
-                            <select id="tx_centro" name="tx_centro" class="select2 form-select">
-                              <option value="0" disabled>Select</option>
-                              <?php
-for($i = 0; $i < count($arreglosCentros); $i++){
-echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$arreglosCentros[$i][0] || $_REQUEST["centrocosto"]==$arreglosCentros[$i][1]?"selected":"").'>'.$arreglosCentros[$i][1].'</option>';
-				}
-				?>
-                             </select>
-                          </div>
+      <label class="form-label" for="country">Detalle</label>
+      <textarea class="form-control" name="tx_detalle" required id="tx_detalle"><?php echo $_REQUEST['descripcion']; ?></textarea>
+    </div>
                          
                         
                           <div class="mb-3 col-md-6">
@@ -508,7 +550,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$
                        <button type="submit" class="btn btn-primary me-2" style="background-color:#553182" id="guardar" >Editar Registro</button>
                        <p>&nbsp;</p>
       <p class="text-info" id="msgerror"></p>
-                          <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
+                          
                         </div>
                       </form>
                     </div>
@@ -522,11 +564,19 @@ echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$
 
 <!------------------------------Generador qr----------------------------------------------------------------------->
       
-      <h3>Generar Códigos QR </h3>
+<div class="col-md-6 col-lg-4 mb-3"  style= "margin: 0 auto"; >
+<div class="card h-400"  >
+  <br> 
+
+      <h3 style= "text-align: center" >Generar Códigos QR </h3>
     <input hidden id="txt" type="text"value ="<?php echo $valor;?>">
     <br>
+
+    <div class="imagen">
     <img alt="Código QR" id="codigo">
     <br>
+   
+
     <button type="button"    class="botonsito" id="btnDescargar">Descargar</button>
 
     <script>
@@ -538,7 +588,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$
         new QRious({
             element: $imagen,
             value: valorrs, // La URL o el texto
-            size: 300,
+            size: 250,
             backgroundAlpha: 255, // 0 para fondo transparente
             foreground: "#553182", // Color del QR
             level: "M", // Puede ser L,M,Q y H (L es el de menor nivel, H el mayor)
@@ -554,12 +604,13 @@ echo'<option value="'.$arreglosCentros[$i][0].'"  '.($_REQUEST["centrocosto"]==$
 
 
 
-
-
+</div>
+</div>
                  
+      </div>
 
-
-
+</div>
+              </div>
                 </div>
               </div>
             </div>

@@ -125,6 +125,7 @@ where (a.id_estado = tbl_estado.id) and (a.id_centrocosto= tbl_centrocosto.id) "
 
 ////////////////////EDITAR ACTIVO//////////////////////
 
+
 public function editar($id, $activo, $marca, $modelo, $num_serie, $valor, $descripcion, $estado, $centrocosto, $fecha, $qr)
 {
     $sql="UPDATE tbl_activo SET activo = '$activo', marca = '$marca', modelo = '$modelo', num_serie = '$num_serie', valor= '$valor', descripcion='$descripcion', id_estado='$estado',id_centrocosto='$centrocosto', fecha='$fecha', qr='$qr'  WHERE id = '$id'";
@@ -186,7 +187,7 @@ public function entregarActivos($txusuConsigna, $txrutConsigna, $txcargoConsigna
 
 public function getTabla()
 {
-    $sql=" SELECT   nombre_consignatario,rut_consignatario,cargo_consignatario,  tbl_centrocosto.nombre as centrocosto,
+    $sql=" SELECT tbl_entrega.id as id,  nombre_consignatario,rut_consignatario,cargo_consignatario,  tbl_centrocosto.nombre as centrocosto,
     id_activo,nom_activo,fecha_entrega,detalle, rut_asigna,nombre_asigna,cargo_asigna
       from tbl_entrega, tbl_centrocosto
   where   (tbl_entrega.id_centrocosto= tbl_centrocosto.id)";

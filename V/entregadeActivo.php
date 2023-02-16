@@ -133,7 +133,7 @@ $arreglosCentros = $data->getCentros();
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="../V/index.html" class="app-brand-link">
+            <a href="../index.php" class="app-brand-link">
              
               <span class="app-brand-text demo menu-text fw-bolder ms-2"></span>
 
@@ -272,7 +272,7 @@ $arreglosCentros = $data->getCentros();
                         <span class="align-middle">Ingrese Activo</span>
                       </a>
                     </li>
-                    <li>
+                    <!-- <li>
                       <a class="dropdown-item" href="#">
                         <i class="bx bx-cog me-2"></i>
                         <span class="align-middle">Settings</span>
@@ -295,7 +295,7 @@ $arreglosCentros = $data->getCentros();
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
-                    </li>
+                    </li> -->
                   </ul>
                 </li>
                 <!--/ User -->
@@ -319,7 +319,7 @@ $arreglosCentros = $data->getCentros();
                       <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Registro</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="reporte_Entrega.php"
+                      <a class="nav-link" href="../V/reportes/reporte_Entrega.php"
                         ><i class="bx bx-bell me-1"></i> Reporte de Entrega</a
                       >
                     </li>
@@ -349,16 +349,20 @@ $arreglosCentros = $data->getCentros();
                         
                       <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">RUT</label>
+                            <label for="firstName" class="form-label" 
+                              >RUT</label>
                             <input
                               class="form-control"
                               type="test"
                               id="rut_consigna"
-                              name="rut_consigna"required
+                              name="rut_consigna"
+                              required="required" pattern="\d{3,8}-[\d|kK]{1}" title="Debe ser un Rut válido" placeholder="Ingresar rut con guion y sin puntos"
+                              
+                             
                               maxlength="12"
                               value=""
                               autofocus
-                              required
+                              
                           
                              
                             />
@@ -429,9 +433,9 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Detalle</label>
-                            <input class="form-control" type="text" name="tx_detalle"  required   id="tx_detalle" value="" />
-                          </div>
+      <label class="form-label" for="country">Detalle</label>
+      <textarea class="form-control" name="tx_detalle" required id="tx_detalle"></textarea>
+    </div>
 
 
 
@@ -442,10 +446,14 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
     
 
                       
-                     
+                    <hr>
+                    <div>
+                      <h5>Datos de Asignatario</h5>
+                      <br>
+                    </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Rut</label>
-                            <input class="form-control" type="text" name="tx_rutAsigna" id="tx_rutAsigna" value="" />
+                            <input class="form-control" type="text" name="tx_rutAsigna" id="tx_rutAsigna"  value="" required="required" pattern="\d{3,8}-[\d|kK]{1}" title="Debe ser un Rut válido" placeholder="Ingresar rut con guion y sin puntos"    />
                           </div>
           
                           <div class="mb-3 col-md-6">
@@ -471,7 +479,7 @@ echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</op
                        <button type="submit" class="btn btn-primary me-2"  id="btnvalida"  >Añadir Registro</button>
                        <p class="text-info" id="msgerror"></p>
 
-                          <button type="reset" class="btn btn-outline-secondary">Cerrar</button>
+                          
                         </div>
                       </form>
                   

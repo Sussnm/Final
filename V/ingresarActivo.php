@@ -1,6 +1,7 @@
 <?php
 include_once "../M/conexion.php";
  include_once "../M/data.php";
+ 
 $con = new Conexion();
 $data = new Data($con->conectar());
 $arreglosEstados = $data->getEstados();
@@ -26,7 +27,7 @@ foreach ($rs as $i) {
 
 }
 
-// echo($valor);
+
 
 
 
@@ -77,7 +78,7 @@ border: 1px solid transparent;
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../vendors/assets/img/favicon/favicon.ico" />
+    <!-- <link rel="icon" type="image/x-icon" href="../vendors/assets/img/favicon/favicon.ico" /> -->
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -169,7 +170,7 @@ border: 1px solid transparent;
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="../../../index.html" class="app-brand-link">
+            <a href="../index.php" class="app-brand-link">
              
               <span class="app-brand-text demo menu-text fw-bolder ms-2"></span>
 
@@ -359,8 +360,8 @@ border: 1px solid transparent;
                       <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Registro</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="reportes.php"
-                        >  <i class="menu-icon tf-icons bx bx-detail"></i> Reporte de Activos</a
+                      <a class="nav-link" href="reportes/reportes.php"
+                        >  <i clazss="menu-icon tf-icons bx bx-detail"></i> Reporte de Activos</a
                       >
                     </li>
                     
@@ -409,7 +410,7 @@ border: 1px solid transparent;
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Marca</label>
-                            <input class="form-control" type="text" name="tx_marca" id="tx_marca" value="" />
+                            <input class="form-control" type="text" name="tx_marca" id="tx_marca" value="" required/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">Modelo</label>
@@ -450,9 +451,17 @@ border: 1px solid transparent;
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Detalle</label>
-                            <input class="form-control" type="text" name="tx_detalle"  required id="tx_detalle" value="" />
+                            <label for="lastName" class="form-label">Centro de Costo</label>
+                            <select id="tx_centro" name="tx_centro"  required   class="select2 form-select">
+                              <option value="0" disabled>Select</option>
+                              <?php
+for($i = 0; $i < count($arreglosCentros); $i++){
+echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</option>';
+				}
+				?>
+                             </select>
                           </div>
+                          
                           <div class="mb-3 col-md-6">
                            <label class="form-label" for="country">Estado</label>
                             <select id="tx_estado" name="tx_estado" class="select2 form-select">
@@ -470,15 +479,8 @@ echo'<option value="'.$arreglosEstados[$i][0].'">'.$arreglosEstados[$i][1].'</op
                             <input class="form-control" type="text" name="tx_detalle" id="tx_detalle" value="" />
                           </div> -->
                           <div class="mb-3 col-md-6">
-                           <label class="form-label" for="country">Centro de Costo</label>
-                            <select id="tx_centro" name="tx_centro"  required   class="select2 form-select">
-                              <option value="0" disabled>Select</option>
-                              <?php
-for($i = 0; $i < count($arreglosCentros); $i++){
-echo'<option value="'.$arreglosCentros[$i][0].'">'.$arreglosCentros[$i][1].'</option>';
-				}
-				?>
-                             </select>
+                           <label class="form-label" for="country">Detalle</label>
+               <textarea  class="form-control" type="text" name="tx_detalle"  required id="tx_detalle" value="" ></textarea>
                           </div>
                          
                         

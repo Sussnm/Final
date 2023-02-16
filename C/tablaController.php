@@ -20,43 +20,32 @@ $txqr = $_POST['tx_qr'];
 $txactivo = $_POST['tx_activo'];
 
 
-// echo $txserie ; 
-//  echo $txvalor ;
-// echo $txdetalle;
-// echo   $txmarca ;
-// echo    $txmodelo;
-// echo    $txestado ;
-// echo   $txcentro ;
-// echo    $txdate; 
-// echo   $txqr ;
-//   echo $txactivo;
-// ;
 
 
 
 
 // if ($_REQUEST["method"]=="formAccountSettings") {
-    // $fecha_final  = $_POST['fecha_final'];
+//     $fecha_final  = $_POST['fecha_final'];
     
-    // $fecha_inicio = $_POST['fecha_inicio'];
+//     $fecha_inicio = $_POST['fecha_inicio'];
 
     $data->insertActivo($txserie, $txvalor, $txdetalle, $txmarca, $txmodelo, $txestado, $txcentro, $txdate, $txqr, $txactivo);
 
     header("Location:../V/ingresarActivo.php");
 
+
+// if ($_REQUEST["method"]=="edit") {
+//     $id = $_POST["id"];
+//     $data->editar($id,$txserie, $txvalor, $txdetalle, $txmarca, $txmodelo, $txestado, $txcentro, $txdate, $txqr, $txactivo);
+
+    // header("Location: ../V/reportes/reporte.php");
+
 // }
-if ($_REQUEST["method"]=="edit") {
-    $id = $_POST["id"];
-    $data->editar($id,$txserie, $txvalor, $txdetalle, $txmarca, $txmodelo, $txestado, $txcentro, $txdate, $txqr, $txactivo);
-
-    header("Location: ../V/reportes/reporte.php");
-
-}
-//  $data->insertarcentroCosto($txcentro);
-  ///funcion para que la pagina se muestre de nuevo
 
 
-///////////////////////////////////////////////////////////////////////////////
+
+
+
 
 
 

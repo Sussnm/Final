@@ -80,7 +80,7 @@ $data = new Data($con->conectar());
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
-          <a href="index.html" class="app-brand-link">
+          <a href="../../index.php" class="app-brand-link">
             <span class="app-brand-logo demo">
               <div class="img-container">
 
@@ -215,7 +215,7 @@ $data = new Data($con->conectar());
 
 
                   <li class="nav-item">
-                    <a class="nav-link" href="../generarExcel.php"><i class="bx bx-link-alt me-1"></i> Generar Excel</a>
+        <a class="nav-link" onclick="exportTableToExcel('tablaresultado')" ><i class="bx bx-link-alt me-1"></i> Generar Excel</a>
 
                   </li>
 
@@ -231,7 +231,7 @@ $data = new Data($con->conectar());
                     </div>
                     <div class="col">
 
-                      <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
+<button type="submit" class="btn btn-primary mb-2">Filtrar</button>
                     </div>
                   </div>
 
@@ -317,7 +317,9 @@ $data = new Data($con->conectar());
                               "&centrocosto=" . $fila['centrocosto'] . "&id_activo=" . $fila['id_activo'] . "&nom_activo=" . $fila['nom_activo'] .
                               "&fecha_entrega=" . $fila['fecha_entrega'] .   "&detalle=" . $fila['detalle'] . "&rut_asigna=" . $fila['rut_asigna'] .
                               "&nombre_asigna=" . $fila['nombre_asigna'] .
-                              "&cargo_asigna=" . $fila['cargo_asigna'] . "'><button type='button' class ='btn btn-'>EDITAR</a>
+                              "&cargo_asigna=" . $fila['cargo_asigna'] .
+                              
+                              "&id=".$fila['id'].    "'><button type='button' class ='btn btn-'>EDITAR </a>
          
          </td>";
 
@@ -352,7 +354,6 @@ $data = new Data($con->conectar());
                                "&cargo_asigna=".$columna['cargo_asigna']."'><button type='button' class ='btn btn-'>EDITAR</a>
 
                             </td>"; 
-
 
 
                             echo  "</tr>";
@@ -441,9 +442,52 @@ $data = new Data($con->conectar());
 
   <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
   <script src="../../vendors/js/tabla_ejemplo.js"></script>
+ 
+  <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
+
 
 
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  <script>
+    function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+</script>
+
+
+
+
+
+
+
 </body>
 
 </html>

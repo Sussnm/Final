@@ -80,7 +80,10 @@ $data = new Data($con->conectar());
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
-          <a href="index.html" class="app-brand-link">
+          <a href="..
+          
+          
+          /../index.php" class="app-brand-link">
             <span class="app-brand-logo demo">
               <div class="img-container">
 
@@ -215,7 +218,7 @@ $data = new Data($con->conectar());
 
 
                   <li class="nav-item">
-                    <a class="nav-link" href="../generarExcel.php"><i class="bx bx-link-alt me-1"></i> Generar Excel</a>
+                    <a class="nav-link" onclick="exportTableToExcel('tablaresultado')"><i class="bx bx-link-alt me-1"></i> Generar Excel</a>
 
                   </li>
 
@@ -232,6 +235,7 @@ $data = new Data($con->conectar());
                     <div class="col">
 
                       <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
+                      <!-- <button onclick="exportTableToExcel('tablaresultado')">excel</button> -->
                     </div>
                   </div>
 
@@ -275,7 +279,7 @@ $data = new Data($con->conectar());
                         <th class="text-nowrap text-center"> Etado</th>
                         <th class="text-nowrap text-center"> Centro de Costo</th>
                         <th class="text-nowrap text-center">Fecha de Recepcion</th>
-                        <th class="text-nowrap text-center">N°Serie</th>
+                        <!-- <th class="text-nowrap text-center">N°Serie</th> -->
                         <th class="text-nowrap text-center">Opciones</th>
 
 
@@ -302,9 +306,9 @@ $data = new Data($con->conectar());
                             echo "<td>" . $fila['centrocosto'] . "</td>";
                             echo "<td>" . $fila['fecha'] . "</td>";
 
-                            echo "<td> <a href='qr.php?activo=" . $fila['activo'] . "&marca=" . $fila['marca'] . "&modelo=" . $fila['modelo'] .
-                              "&num_serie=" . $fila['num_serie'] . "&valor=" . $fila['valor'] . "&descripcion=" . $fila['descripcion'] . "&estado=" . $fila['estado'] .
-                              "&centrocosto=" . $fila['centrocosto'] . "&fecha=" . $fila['fecha'] . "&qr=" . $fila['qr'] . "'>" . $fila['qr'] . "</a></td>";
+                            // echo "<td> <a href='qr.php?activo=" . $fila['activo'] . "&marca=" . $fila['marca'] . "&modelo=" . $fila['modelo'] .
+                            //   "&num_serie=" . $fila['num_serie'] . "&valor=" . $fila['valor'] . "&descripcion=" . $fila['descripcion'] . "&estado=" . $fila['estado'] .
+                            //   "&centrocosto=" . $fila['centrocosto'] . "&fecha=" . $fila['fecha'] . "&qr=" . $fila['qr'] . "'>" . $fila['qr'] . "</a></td>";
 
 
                             /////////boton///// crud///////////////////////////
@@ -344,9 +348,9 @@ $data = new Data($con->conectar());
                             echo "<td>" . $columna['estado'] . "</td>";
                             echo "<td>" . $columna['centrocosto'] . "</td>";
                             echo "<td>" . $columna['fecha'] . "</td>";
-                            echo "<td> <a href='qr.php?activo=" . $columna['activo'] . "&marca=" . $columna['marca'] . "&modelo=" . $columna['modelo'] .
-                              "&num_serie=" . $columna['num_serie'] . "&valor=" . $columna['valor'] . "&descripcion=" . $columna['descripcion'] . "&estado=" . $columna['estado'] .
-                              "&centrocosto=" . $columna['centrocosto'] . "&fecha=" . $columna['fecha'] . "&qr=" . $columna['qr'] . "'>" . $columna['qr'] . "</a></td>";
+                            // echo "<td> <a href='qr.php?activo=" . $columna['activo'] . "&marca=" . $columna['marca'] . "&modelo=" . $columna['modelo'] .
+                            //   "&num_serie=" . $columna['num_serie'] . "&valor=" . $columna['valor'] . "&descripcion=" . $columna['descripcion'] . "&estado=" . $columna['estado'] .
+                            //   "&centrocosto=" . $columna['centrocosto'] . "&fecha=" . $columna['fecha'] . "&qr=" . $columna['qr'] . "'>" . $columna['qr'] . "</a></td>";
                             /////////////////////////inicio boton editar////////////////////////////////////////////////
                             echo "<td>
 
@@ -436,8 +440,45 @@ $data = new Data($con->conectar());
   <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
   <script src="../../vendors/js/tabla_ejemplo.js"></script>
 
-
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+  
+  <script>
+    function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+   
+    
+}
+</script>
+
+ 
+
 </body>
 
 </html>
